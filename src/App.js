@@ -6,9 +6,9 @@ return (
 
 
 <div className="App">
-<NavBar />
-<CardNFTCollection />
-<MarketingFooter />
+  <NavBar width={"100vw"} />
+  <CardNFTCollection isPaginated itemsPerPage={20} />
+  <MarketingFooter width={"100vw"} />
 </div>
 
 
