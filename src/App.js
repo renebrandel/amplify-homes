@@ -11,10 +11,10 @@ return (
   <CardNFT
     CardNFT={{
       token_address: 'aaa',
-      collection_name: 'bbb',
+      collection_name: 'Love Addicted Girls',
       token_id: 'aaa',
-      name: 'LAG #1234',
-      image: 'https://ipfs.moralis.io:2053/ipfs/QmWsNgLwBLiqGpUrhUS48ejRFAgUA92ChF6Xo45uMKWnmQ/0891.png',
+      name: 'LAG#0167',
+      image: 'https://ipfs.moralis.io:2053/ipfs/QmWsNgLwBLiqGpUrhUS48ejRFAgUA92ChF6Xo45uMKWnmQ/0167.png',
     }}
     height="358px"
     width="300px"

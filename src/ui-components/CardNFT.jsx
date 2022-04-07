@@ -85,7 +85,7 @@ export default function CardNFT(props) {
         ></Text>
         <Text
           fontFamily="Noto Sans JP"
-          fontSize="24px"
+          fontSize="20px"
           fontWeight="400"
           color="rgba(0,0,0,1)"
           lineHeight="24px"
@@ -93,7 +93,7 @@ export default function CardNFT(props) {
           display="flex"
           direction="column"
           justifyContent="flex-start"
-          letterSpacing="0.09px"
+          letterSpacing="0.05px"
           shrink="0"
           alignSelf="stretch"
           objectFit="cover"
