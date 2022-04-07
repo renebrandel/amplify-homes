@@ -29,6 +29,7 @@ export default function CardA(props) {
         objectFit="cover"
         position="relative"
         padding="0px 0px 0px 0px"
+        src=""
         {...getOverrideProps(overrides, "image")}
       ></Image>
       <Flex

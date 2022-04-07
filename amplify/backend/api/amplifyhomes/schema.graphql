@@ -1,10 +1,10 @@
 type NFT @model @auth(rules: [{allow: public}]) {
   id: ID!
   token_address: String
+  collection_name: String
   token_id: String
   name: String
   image: String
-  collection_name: String
 }
 
 type Home @model @auth(rules: [{allow: public}]) {
@@ -12,5 +12,4 @@ type Home @model @auth(rules: [{allow: public}]) {
   address: String
   image_url: String
   price: Float
-}
- 
+} 

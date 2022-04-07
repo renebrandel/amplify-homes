@@ -17,6 +17,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "collection_name": {
+                    "name": "collection_name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "token_id": {
                     "name": "token_id",
                     "isArray": false,
@@ -33,13 +40,6 @@ export const schema = {
                 },
                 "image": {
                     "name": "image",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "collection_name": {
-                    "name": "collection_name",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,

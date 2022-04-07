@@ -15,10 +15,10 @@ type HomeMetaData = {
 export declare class NFT {
   readonly id: string;
   readonly token_address?: string | null;
+  readonly collection_name?: string | null;
   readonly token_id?: string | null;
   readonly name?: string | null;
   readonly image?: string | null;
-  readonly collection_name?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<NFT, NFTMetaData>);
