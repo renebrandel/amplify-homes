@@ -7,13 +7,16 @@
 /* eslint-disable */
 import React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { Flex, Text, TextField, View } from "@aws-amplify/ui-react";
+import { Flex, Icon, Text, View } from "@aws-amplify/ui-react";
+import Twitter from "./Twitter";
+import Discord from "./Discord";
+import OpenSea from "./OpenSea";
 export default function MarketingFooter(props) {
   const { overrides, ...rest } = props;
   return (
     <View
       width="1440px"
-      height="400px"
+      height="252px"
       position="relative"
       padding="0px 0px 0px 0px"
       {...rest}
@@ -26,7 +29,7 @@ export default function MarketingFooter(props) {
         left="0%"
         right="0%"
         padding="0px 0px 0px 0px"
-        backgroundColor="rgba(0,0,0,1)"
+        backgroundColor="rgba(57,50,49,1)"
         {...getOverrideProps(overrides, "Rectangle 738")}
       ></View>
       <Text
@@ -41,158 +44,51 @@ export default function MarketingFooter(props) {
         justifyContent="flex-start"
         letterSpacing="0.01px"
         position="absolute"
-        bottom="40px"
-        left="40px"
+        bottom="30px"
+        left="60px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna"
-        {...getOverrideProps(
-          overrides,
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna"
-        )}
+        children="© 2022 SoudanNFT"
+        {...getOverrideProps(overrides, "\u00A9 2022 SoudanNFT")}
       ></Text>
       <Flex
-        gap="24px"
+        gap="50px"
         position="absolute"
-        top="40px"
-        right="140px"
+        top="0px"
+        left="40px"
         direction="row"
+        width="1360px"
         alignItems="flex-start"
-        padding="0px 0px 0px 0px"
-        {...getOverrideProps(overrides, "Frame 405")}
+        padding="40px 20px 40px 20px"
+        {...getOverrideProps(overrides, "Frame 417")}
       >
         <Flex
-          gap="8px"
+          gap="16px"
           direction="column"
-          shrink="0"
-          height="152px"
-          position="relative"
-          padding="0px 0px 0px 0px"
-          {...getOverrideProps(overrides, "Frame 403")}
-        >
-          <Text
-            fontFamily="Inter"
-            fontSize="16px"
-            fontWeight="400"
-            color="rgba(255,255,255,1)"
-            lineHeight="24px"
-            textAlign="left"
-            display="flex"
-            direction="column"
-            justifyContent="flex-start"
-            letterSpacing="0.01px"
-            width="272px"
-            shrink="0"
-            position="relative"
-            padding="0px 0px 0px 0px"
-            whiteSpace="pre-wrap"
-            children="Lorem ipsum dolor sit amet"
-            {...getOverrideProps(overrides, "Lorem ipsum dolor sit amethpx")}
-          ></Text>
-          <Text
-            fontFamily="Inter"
-            fontSize="16px"
-            fontWeight="400"
-            color="rgba(255,255,255,1)"
-            lineHeight="24px"
-            textAlign="left"
-            display="flex"
-            direction="column"
-            justifyContent="flex-start"
-            letterSpacing="0.01px"
-            width="272px"
-            shrink="0"
-            position="relative"
-            padding="0px 0px 0px 0px"
-            whiteSpace="pre-wrap"
-            children="Consectetur adipiscing"
-            {...getOverrideProps(overrides, "Consectetur adipiscingqov")}
-          ></Text>
-          <Text
-            fontFamily="Inter"
-            fontSize="16px"
-            fontWeight="400"
-            color="rgba(255,255,255,1)"
-            lineHeight="24px"
-            textAlign="left"
-            display="flex"
-            direction="column"
-            justifyContent="flex-start"
-            letterSpacing="0.01px"
-            width="272px"
-            shrink="0"
-            position="relative"
-            padding="0px 0px 0px 0px"
-            whiteSpace="pre-wrap"
-            children="Elit sed do eiusmod"
-            {...getOverrideProps(overrides, "Elit sed do eiusmodwep")}
-          ></Text>
-          <Text
-            fontFamily="Inter"
-            fontSize="16px"
-            fontWeight="400"
-            color="rgba(255,255,255,1)"
-            lineHeight="24px"
-            textAlign="left"
-            display="flex"
-            direction="column"
-            justifyContent="flex-start"
-            letterSpacing="0.01px"
-            width="272px"
-            shrink="0"
-            position="relative"
-            padding="0px 0px 0px 0px"
-            whiteSpace="pre-wrap"
-            children="Tempor incididunt ut labore"
-            {...getOverrideProps(overrides, "Tempor incididunt ut labore")}
-          ></Text>
-          <Text
-            fontFamily="Inter"
-            fontSize="16px"
-            fontWeight="400"
-            color="rgba(255,255,255,1)"
-            lineHeight="24px"
-            textAlign="left"
-            display="flex"
-            direction="column"
-            justifyContent="flex-start"
-            letterSpacing="0.01px"
-            width="272px"
-            shrink="0"
-            position="relative"
-            padding="0px 0px 0px 0px"
-            whiteSpace="pre-wrap"
-            children="Et dolore magna"
-            {...getOverrideProps(overrides, "Et dolore magna")}
-          ></Text>
-        </Flex>
-        <Flex
-          gap="8px"
-          direction="column"
+          width="773px"
           shrink="0"
           height="88px"
           position="relative"
           padding="0px 0px 0px 0px"
-          {...getOverrideProps(overrides, "Frame 404")}
+          {...getOverrideProps(overrides, "Frame 313")}
         >
           <Text
-            fontFamily="Inter"
-            fontSize="16px"
-            fontWeight="400"
+            fontFamily="Zen Maru Gothic"
+            fontSize="24px"
+            fontWeight="700"
             color="rgba(255,255,255,1)"
             lineHeight="24px"
             textAlign="left"
             display="flex"
             direction="column"
             justifyContent="flex-start"
-            letterSpacing="0.01px"
-            width="272px"
+            width="471px"
             shrink="0"
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="Lorem ipsum dolor sit amet"
-            {...getOverrideProps(overrides, "Lorem ipsum dolor sit ametxyk")}
+            children="DressUP NFT"
+            {...getOverrideProps(overrides, "DressUP NFT")}
           ></Text>
           <Text
             fontFamily="Inter"
@@ -205,124 +101,103 @@ export default function MarketingFooter(props) {
             direction="column"
             justifyContent="flex-start"
             letterSpacing="0.01px"
-            width="272px"
+            width="471px"
             shrink="0"
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="Consectetur adipiscing"
-            {...getOverrideProps(overrides, "Consectetur adipiscingtyg")}
+            children="Expand the possibilities of NFT.&#xA;A platform for dress up."
+            {...getOverrideProps(
+              overrides,
+              "Expand the possibilities of NFT. A platform for dress up."
+            )}
           ></Text>
+        </Flex>
+        <Flex
+          padding="0px 0px 0px 0px"
+          width="272px"
+          height="94px"
+          shrink="0"
+          position="relative"
+          {...getOverrideProps(overrides, "Group 321")}
+        >
+          <Flex
+            gap="40px"
+            position="absolute"
+            top="44px"
+            left="0px"
+            direction="row"
+            alignItems="center"
+            padding="0px 0px 0px 0px"
+            {...getOverrideProps(overrides, "Frame 321")}
+          >
+            <Twitter
+              width="50px"
+              height="41.18px"
+              shrink="0"
+              overflow="hidden"
+              position="relative"
+              padding="0px 0px 0px 0px"
+              {...getOverrideProps(overrides, "twitter")}
+            ></Twitter>
+            <Discord
+              width="50px"
+              height="39.22px"
+              shrink="0"
+              overflow="hidden"
+              position="relative"
+              padding="0px 0px 0px 0px"
+              {...getOverrideProps(overrides, "Discord")}
+            ></Discord>
+            <OpenSea
+              width="50px"
+              height="50px"
+              shrink="0"
+              overflow="hidden"
+              position="relative"
+              padding="0px 0px 0px 0px"
+              {...getOverrideProps(overrides, "OpenSea")}
+            ></OpenSea>
+          </Flex>
           <Text
             fontFamily="Inter"
-            fontSize="16px"
-            fontWeight="400"
+            fontSize="20px"
+            fontWeight="700"
             color="rgba(255,255,255,1)"
             lineHeight="24px"
             textAlign="left"
             display="flex"
             direction="column"
             justifyContent="flex-start"
-            letterSpacing="0.01px"
+            letterSpacing="0.05px"
             width="272px"
-            shrink="0"
-            position="relative"
+            position="absolute"
+            top="0px"
+            left="0px"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="Elit sed do eiusmod"
-            {...getOverrideProps(overrides, "Elit sed do eiusmodgfo")}
+            children="Join the community"
+            {...getOverrideProps(overrides, "Join the community")}
           ></Text>
         </Flex>
       </Flex>
-      <Text
-        fontFamily="Inter"
-        fontSize="16px"
-        fontWeight="400"
-        color="rgba(255,255,255,1)"
-        lineHeight="24px"
-        textAlign="right"
-        display="flex"
-        direction="column"
-        justifyContent="flex-start"
-        letterSpacing="0.01px"
+      <Icon
+        width="1360px"
+        height="0px"
+        viewBox={{ minX: 0, minY: 0, width: 1360, height: 1 }}
+        paths={[
+          {
+            d: "M0 0L1360 0L1360 -1L0 -1L0 0Z",
+            stroke: "rgba(139,130,129,1)",
+            fillRule: "nonzero",
+            strokeWidth: 1,
+          },
+        ]}
         position="absolute"
-        bottom="40px"
-        right="40px"
-        padding="0px 0px 0px 0px"
-        whiteSpace="pre-wrap"
-        children="Lorem ipsum dolor sit amet 2021"
-        {...getOverrideProps(overrides, "Lorem ipsum dolor sit amet 2021")}
-      ></Text>
-      <Flex
-        gap="16px"
-        position="absolute"
-        top="40px"
+        top="174px"
         left="40px"
-        direction="column"
-        padding="0px 0px 0px 0px"
-        {...getOverrideProps(overrides, "Frame 313")}
-      >
-        <Text
-          fontFamily="Inter"
-          fontSize="14px"
-          fontWeight="400"
-          color="rgba(255,255,255,1)"
-          lineHeight="24px"
-          textAlign="left"
-          display="flex"
-          direction="column"
-          justifyContent="flex-start"
-          width="471px"
-          shrink="0"
-          position="relative"
-          padding="0px 0px 0px 0px"
-          whiteSpace="pre-wrap"
-          children="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna"
-          {...getOverrideProps(
-            overrides,
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna"
-          )}
-        ></Text>
-        <TextField
-          display="flex"
-          gap="8px"
-          direction="column"
-          width="300px"
-          justifyContent="center"
-          shrink="0"
-          position="relative"
-          padding="0px 0px 0px 0px"
-          label="Label"
-          placeholder="Placeholder"
-          size="default"
-          isDisabled={false}
-          labelHidden={false}
-          variation="default"
-          {...getOverrideProps(overrides, "TextField")}
-        ></TextField>
-        <Text
-          fontFamily="Inter"
-          fontSize="16px"
-          fontWeight="400"
-          color="rgba(255,255,255,1)"
-          lineHeight="24px"
-          textAlign="left"
-          display="flex"
-          direction="column"
-          justifyContent="flex-start"
-          letterSpacing="0.01px"
-          width="471px"
-          shrink="0"
-          position="relative"
-          padding="0px 0px 0px 0px"
-          whiteSpace="pre-wrap"
-          children="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do."
-          {...getOverrideProps(
-            overrides,
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do."
-          )}
-        ></Text>
-      </Flex>
+        {...getOverrideProps(overrides, "Line 1")}
+      ></Icon>
     </View>
   );
 }

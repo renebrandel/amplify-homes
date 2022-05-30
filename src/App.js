@@ -8,6 +8,9 @@ return (
 
 <div className="App">
   <NavBar width={"100vw"} />
+
+
+
   <CardNFT
     CardNFT={{
       token_address: 'aaa',
@@ -43,3 +46,4 @@ function App() {
 export default App;
 
 */
+

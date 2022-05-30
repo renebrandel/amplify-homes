@@ -8,6 +8,9 @@
 import React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Button, Flex, Image, Text } from "@aws-amplify/ui-react";
+import Twitter from "./Twitter";
+import Discord from "./Discord";
+import OpenSea from "./OpenSea";
 export default function NavBar(props) {
   const { overrides, ...rest } = props;
   return (
@@ -53,38 +56,38 @@ export default function NavBar(props) {
         alignItems="center"
         grow="1"
         basis="613px"
-        height="38px"
+        height="30px"
         position="relative"
         padding="0px 0px 0px 0px"
         {...getOverrideProps(overrides, "NavBarMenuLeft")}
       >
-        <Image
-          width="29.54px"
-          height="24px"
+        <Twitter
+          width="30px"
+          height="24.68px"
           shrink="0"
+          overflow="hidden"
           position="relative"
           padding="0px 0px 0px 0px"
-          src="./logo-twitter.png"
           {...getOverrideProps(overrides, "logo-twitter")}
-        ></Image>
-        <Image
-          width="33.93px"
-          height="38px"
+        ></Twitter>
+        <Discord
+          width="30px"
+          height="23.24px"
           shrink="0"
+          overflow="hidden"
           position="relative"
           padding="0px 0px 0px 0px"
-          src="./logo-discord.png"
           {...getOverrideProps(overrides, "logo-discord")}
-        ></Image>
-        <Image
-          width="28.93px"
-          height="28px"
+        ></Discord>
+        <OpenSea
+          width="30px"
+          height="30px"
           shrink="0"
+          overflow="hidden"
           position="relative"
           padding="0px 0px 0px 0px"
-          src="./logo-opensea.png"
-          {...getOverrideProps(overrides, "logo-opensea")}
-        ></Image>
+          {...getOverrideProps(overrides, "logo-openSea")}
+        ></OpenSea>
         <Text
           fontFamily="Inter"
           fontSize="20px"
@@ -104,14 +107,14 @@ export default function NavBar(props) {
         ></Text>
       </Flex>
       <Flex
-        gap="32px"
+        gap="24px"
         direction="row"
         width="613px"
         justifyContent="flex-end"
         alignItems="center"
         grow="1"
         basis="613px"
-        height="46px"
+        height="40px"
         position="relative"
         padding="0px 0px 0px 0px"
         {...getOverrideProps(overrides, "NavBarMenuRight")}
@@ -121,41 +124,40 @@ export default function NavBar(props) {
           gap="0"
           direction="row"
           width="fit-content"
+          height="40px"
           justifyContent="center"
           alignItems="center"
           shrink="0"
           alignSelf="stretch"
           position="relative"
-          border="1px SOLID rgba(0,0,0,0)"
-          borderRadius="4px"
-          padding="7px 15px 7px 15px"
-          backgroundColor="rgba(4,125,149,1)"
-          size="large"
+          border="1px SOLID rgba(244,232,231,1)"
+          borderRadius="20px"
+          backgroundColor="rgba(255,255,255,1)"
+          size="default"
           isDisabled={false}
           variation="primary"
           children="Logout"
-          {...getOverrideProps(overrides, "Buttongme")}
+          {...getOverrideProps(overrides, "Button30732805")}
         ></Button>
         <Button
           display="flex"
           gap="0"
           direction="row"
           width="fit-content"
-          height="46px"
+          height="40px"
           justifyContent="center"
           alignItems="center"
           shrink="0"
           alignSelf="stretch"
           position="relative"
-          border="1px SOLID rgba(0,0,0,0)"
-          borderRadius="4px"
-          padding="7px 15px 7px 15px"
-          backgroundColor="rgba(4,125,149,1)"
-          size="large"
+          border="1px SOLID rgba(244,232,231,1)"
+          borderRadius="20px"
+          backgroundColor="rgba(255,255,255,1)"
+          size="default"
           isDisabled={false}
           variation="primary"
           children="Connect your wallet"
-          {...getOverrideProps(overrides, "Buttonspz")}
+          {...getOverrideProps(overrides, "Button30752736")}
         ></Button>
       </Flex>
     </Flex>

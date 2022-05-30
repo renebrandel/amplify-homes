@@ -43,7 +43,6 @@ export default function CardE(props) {
           justifyContent="flex-start"
           alignItems="center"
           borderRadius="99px"
-          padding="6px 8px 6px 8px"
           backgroundColor="rgba(239,240,240,1)"
           fontSize="12px"
           lineHeight="12px"

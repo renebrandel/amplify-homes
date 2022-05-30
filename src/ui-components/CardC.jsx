@@ -132,10 +132,6 @@ export default function CardC(props) {
           alignSelf="stretch"
           objectFit="cover"
           position="relative"
-          border="1px SOLID rgba(0,0,0,0)"
-          borderRadius="4px"
-          padding="7px 15px 7px 15px"
-          backgroundColor="rgba(4,125,149,1)"
           size="large"
           isDisabled={false}
           variation="primary"

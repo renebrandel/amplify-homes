@@ -184,7 +184,7 @@ export default function CardG(props) {
             children="Information about this product."
             {...getOverrideProps(
               overrides,
-              "Information about this product.xfh"
+              "Information about this product.29766836"
             )}
           ></Text>
           <Text
@@ -207,7 +207,7 @@ export default function CardG(props) {
             children="Information about this product."
             {...getOverrideProps(
               overrides,
-              "Information about this product.mdh"
+              "Information about this product.29766837"
             )}
           ></Text>
         </Flex>
@@ -221,7 +221,6 @@ export default function CardG(props) {
           shrink="0"
           position="relative"
           borderRadius="99px"
-          padding="6px 8px 6px 8px"
           backgroundColor="rgba(239,240,240,1)"
           fontSize="12px"
           lineHeight="12px"
@@ -254,7 +253,7 @@ export default function CardG(props) {
             height="36px"
             position="relative"
             padding="0px 0px 0px 0px"
-            {...getOverrideProps(overrides, "Rating")}
+            {...getOverrideProps(overrides, "Rating29766840")}
           >
             <Rating
               display="flex"
@@ -267,7 +266,7 @@ export default function CardG(props) {
               position="relative"
               padding="0px 0px 0px 0px"
               size="large"
-              {...getOverrideProps(overrides, "Ratinglcc")}
+              {...getOverrideProps(overrides, "Rating29766841")}
             ></Rating>
             <Text
               fontFamily="Inter"
