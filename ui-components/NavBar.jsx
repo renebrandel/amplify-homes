@@ -124,38 +124,40 @@ export default function NavBar(props) {
           gap="0"
           direction="row"
           width="fit-content"
+          height="40px"
           justifyContent="center"
           alignItems="center"
           shrink="0"
-          height="42px"
+          alignSelf="stretch"
           position="relative"
           border="1px SOLID rgba(244,232,231,1)"
-          borderRadius="21px"
-          padding="8px 16px 8px 16px"
+          borderRadius="20px"
+          backgroundColor="rgba(255,255,255,1)"
           size="default"
           isDisabled={false}
-          variation="default"
+          variation="primary"
           children="Logout"
-          {...getOverrideProps(overrides, "Button32282745")}
+          {...getOverrideProps(overrides, "Button30732805")}
         ></Button>
         <Button
           display="flex"
           gap="0"
           direction="row"
           width="fit-content"
+          height="40px"
           justifyContent="center"
           alignItems="center"
           shrink="0"
-          height="42px"
+          alignSelf="stretch"
           position="relative"
           border="1px SOLID rgba(244,232,231,1)"
-          borderRadius="21px"
-          padding="8px 16px 8px 16px"
+          borderRadius="20px"
+          backgroundColor="rgba(255,255,255,1)"
           size="default"
           isDisabled={false}
-          variation="default"
+          variation="primary"
           children="Connect your wallet"
-          {...getOverrideProps(overrides, "Button32282749")}
+          {...getOverrideProps(overrides, "Button30752736")}
         ></Button>
       </Flex>
     </Flex>
