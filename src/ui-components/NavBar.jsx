@@ -22,7 +22,6 @@ export default function NavBar(props) {
       alignItems="center"
       position="relative"
       padding="24px 32px 24px 32px"
-      backgroundColor="rgba(255,255,255,1)"
       {...rest}
       {...getOverrideProps(overrides, "NavBar")}
     >
@@ -132,6 +131,7 @@ export default function NavBar(props) {
           border="1px SOLID rgba(244,232,231,1)"
           borderRadius="21px"
           padding="8px 16px 8px 16px"
+          backgroundColor="rgba(255,255,255,1)"
           size="default"
           isDisabled={false}
           variation="default"
@@ -151,6 +151,7 @@ export default function NavBar(props) {
           border="1px SOLID rgba(244,232,231,1)"
           borderRadius="21px"
           padding="8px 16px 8px 16px"
+          backgroundColor="rgba(255,255,255,1)"
           size="default"
           isDisabled={false}
           variation="default"
