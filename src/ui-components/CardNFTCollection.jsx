@@ -40,7 +40,7 @@ export default function CardNFTCollection(props) {
       {(item, index) => (
         <CardNFT
           CardNFT={item}
-          height="358px"
+          height="370px"
           width="300px"
           margin="10px 10px 10px 10px"
           key={item.id}

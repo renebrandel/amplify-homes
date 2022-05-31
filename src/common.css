@@ -1,3 +1,12 @@
 body {
   background-color: #f4e8e7;
 }
+
+.amplify-collection-items > .amplify-flex {
+  transition: box-shadow ease-in-out .2s;
+  transform: translateY(0);
+}
+.amplify-collection-items > .amplify-flex:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px 0 rgb(0 0 0 / 20%);
+}

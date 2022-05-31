@@ -14,7 +14,6 @@ export default function CardNFT(props) {
     <Flex
       gap="8px"
       direction="column"
-      height="370px"
       overflow="hidden"
       position="relative"
       border="1px SOLID rgba(244,232,231,1)"
