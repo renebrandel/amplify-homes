@@ -9,7 +9,10 @@ return (
 <div className="App">
   <NavBar width={"100vw"} />
 
-
+  <div class="mv">
+    <p class="catch-copy">Let's dress up your NFT</p>
+    <p>You can change your NFT clothes. First, select the NFT you want to dress up.</p>
+  </div>
 
   <CardNFT
     CardNFT={{
@@ -19,12 +22,12 @@ return (
       name: 'LAG#0167',
       image: 'https://ipfs.moralis.io:2053/ipfs/QmWsNgLwBLiqGpUrhUS48ejRFAgUA92ChF6Xo45uMKWnmQ/0167.png',
     }}
-    height="358px"
+    height="368px"
     width="300px"
     margin="10px 10px 10px 10px"
 
   />
-  <CardNFTCollection isPaginated itemsPerPage={20} />
+  <CardNFTCollection itemsPerPage={20} />
   <MarketingFooter width={"100vw"} />
 </div>
 
@@ -46,4 +49,3 @@ function App() {
 export default App;
 
 */
-
