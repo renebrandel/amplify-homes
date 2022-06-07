@@ -15,7 +15,7 @@ export default function NavBar(props) {
   const { overrides, ...rest } = props;
   return (
     <Flex
-      gap="20px"
+      gap="40px"
       direction="row"
       width="1440px"
       justifyContent="center"
@@ -49,12 +49,12 @@ export default function NavBar(props) {
         ></Image>
       </Flex>
       <Flex
-        gap="40px"
+        gap="30px"
         direction="row"
-        width="613px"
+        width="593px"
         alignItems="center"
         grow="1"
-        basis="613px"
+        basis="593px"
         height="30px"
         position="relative"
         padding="0px 0px 0px 0px"
@@ -108,11 +108,11 @@ export default function NavBar(props) {
       <Flex
         gap="24px"
         direction="row"
-        width="613px"
+        width="593px"
         justifyContent="flex-end"
         alignItems="center"
         grow="1"
-        basis="613px"
+        basis="593px"
         height="40px"
         position="relative"
         padding="0px 0px 0px 0px"
