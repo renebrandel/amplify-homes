@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 export default function List() {
     return (
         <>
-            <div class="mv">
-                <p class="catch-copy">Let's dress up your NFT</p>
+            <div className="mv">
+                <p className="catch-copy">Let's dress up your NFT</p>
                 <p>You can change your NFT clothes. First, select the NFT you want to dress up.</p>
             </div>
             <Link to="/dressup">
