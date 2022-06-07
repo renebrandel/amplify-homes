@@ -1,7 +1,6 @@
 import './App.css';
-import { NFT } from './models';
-import { CardNFTCollection, CardNFT, CardA, NavBar, MarketingFooter } from './ui-components'
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { NavBar, MarketingFooter } from './ui-components'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dressup from "./routes/dressup";
 import List from './routes/list';
 
