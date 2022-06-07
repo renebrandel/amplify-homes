@@ -8,12 +8,19 @@ import Amplify from 'aws-amplify';
 import "@aws-amplify/ui-react/styles.css";
 import {AmplifyProvider} from "@aws-amplify/ui-react";
 import awsconfig from './aws-exports';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dressup from "./routes/dressup";
 Amplify.configure(awsconfig);
 
 ReactDOM.render(
   <React.StrictMode>
     <AmplifyProvider>
-      <App />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="dressup" element={<Dressup />} />
+        </Routes>
+      </BrowserRouter>
     </AmplifyProvider>
   </React.StrictMode>,
   document.getElementById('root')
