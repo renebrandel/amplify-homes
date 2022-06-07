@@ -8,13 +8,17 @@ import Amplify from 'aws-amplify';
 import "@aws-amplify/ui-react/styles.css";
 import {AmplifyProvider} from "@aws-amplify/ui-react";
 import awsconfig from './aws-exports';
+import { MoralisProvider } from "react-moralis";
+
 Amplify.configure(awsconfig);
 
 ReactDOM.render(
   <React.StrictMode>
-    <AmplifyProvider>
-      <App />
-    </AmplifyProvider>
+    <MoralisProvider serverUrl="https://9dtwybgsflwn.usemoralis.com:2053/server" appId="lSWuDXblZuRVzOGqeRUMrEho6UBRfIHtCrnY7TNF">
+      <AmplifyProvider>
+        <App />
+      </AmplifyProvider>
+    </MoralisProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
