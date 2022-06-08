@@ -247,16 +247,25 @@ export default function MarketingFooter(props) {
           ></Text>
         </Flex>
       </Flex>
-      <View
-        width="1360px"
-        height="1px"
+      <Flex
+        gap="10px"
         position="absolute"
-        top="174px"
-        left="40px"
-        padding="0px 0px 0px 0px"
-        backgroundColor="rgba(139,130,129,1)"
-        {...getOverrideProps(overrides, "Rectangle 1165")}
-      ></View>
+        top="164px"
+        left="30px"
+        direction="column"
+        padding="10px 10px 10px 10px"
+        {...getOverrideProps(overrides, "Frame 418")}
+      >
+        <View
+          width="1360px"
+          height="1px"
+          shrink="0"
+          position="relative"
+          padding="0px 0px 0px 0px"
+          backgroundColor="rgba(139,130,129,1)"
+          {...getOverrideProps(overrides, "Rectangle 1165")}
+        ></View>
+      </Flex>
     </View>
   );
 }

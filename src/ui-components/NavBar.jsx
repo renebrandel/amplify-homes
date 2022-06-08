@@ -136,7 +136,7 @@ export default function NavBar(props) {
           isDisabled={false}
           variation="default"
           children="Logout"
-          {...getOverrideProps(overrides, "Button32282745")}
+          {...getOverrideProps(overrides, "LogoutButton")}
         ></Button>
         <Button
           display="flex"
@@ -156,7 +156,7 @@ export default function NavBar(props) {
           isDisabled={false}
           variation="default"
           children="Connect your wallet"
-          {...getOverrideProps(overrides, "Button32282749")}
+          {...getOverrideProps(overrides, "LoginButton")}
         ></Button>
       </Flex>
     </Flex>
