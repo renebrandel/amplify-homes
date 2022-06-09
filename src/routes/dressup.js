@@ -6,7 +6,7 @@ export default function Dressup() {
               <h1 class="card__dress-up--title">Outfit Room</h1>
               <a href="" class="back-link">←Change NFT</a>
             </div>
-            <button>↓Download</button>
+            <button>↓ Download</button>
           </div>
           <div class="card__dress-up--change">
             <div class="card__dress-up--image">
@@ -20,14 +20,14 @@ export default function Dressup() {
                 <dd>
                   <button>Floral</button>
                   <button>Gradation</button>
-                  <button>[R]Pink Pinstripe</button>
+                  <button class="select">[R]Pink Pinstripe</button>
                 </dd>
               </dl>
               <dl>
                 <dt>Body</dt>
                 <dd>
                   <button>Casual Brown</button>
-                  <button>Casual Brown</button>
+                  <button class="select">Casual Brown</button>
                   <button>Autumn Kimono</button>
                   <button>Festival Kimono</button>
                 </dd>
@@ -35,14 +35,14 @@ export default function Dressup() {
               <dl>
                 <dt>Face</dt>
                 <dd>
-                  <button>Puple Gal</button>
+                  <button class="select">Puple Gal</button>
                 </dd>
               </dl>
               <dl>
                 <dt>Hair</dt>
                 <dd>
                   <button>Straight</button>
-                  <button>Blue Pigtails</button>
+                  <button class="select">Blue Pigtails</button>
                   <button>Bun</button>
                   <button>Wavy</button>
                   <button>[R]Black Pigtails</button>
