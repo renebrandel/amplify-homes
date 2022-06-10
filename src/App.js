@@ -26,6 +26,8 @@ function App() {
     console.log("isAuthenticated : " + isAuthenticated);
     if (isAuthenticated) {
       // add your logic here
+      // dispNFTs();
+
     } else {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -69,6 +71,7 @@ function App() {
     let dispAddress = ethAddress.substr(0, 5) + "....." + ethAddress.slice(-5);
     return dispAddress
   }
+
 
   return (
 
