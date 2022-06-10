@@ -13,16 +13,20 @@ function App() {
   const navBarOverrides = {
     "LoginButton": {
       onClick: (event) => { logIn() },
+      style: { visibility: "visible" },
+      children: "Connect your wallet",
     },
     "LogoutButton": {
       onClick: (event) => { logOut() },
+      style: { visibility: "hidden" },
     },
   };
 
   useEffect(() => {
+    console.log("isAuthenticated : " + isAuthenticated);
     if (isAuthenticated) {
       // add your logic here
-      
+    } else {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated]);
@@ -46,26 +50,30 @@ function App() {
     console.log("logged out");
   }
 
-  const dispLoginInfo = () => {
-    if (!isAuthenticated) {
-      return    <button onClick={logIn}>Metamask Login</button>;
+  const dispNavBar = () => {
+
+    if (isAuthenticated) {
+      navBarOverrides.LoginButton.children = getDispAddress();
+      navBarOverrides.LogoutButton.style.visibility = "visible";
     } else {
-      let ethAddress = user.get("ethAddress");
-      let dispAddress = ethAddress.substr(0, 5) + "....." + ethAddress.slice(-5);
-      return (
-        <>
-          <div>{dispAddress}</div>
-          <button onClick={logOut} disabled={isAuthenticating}>Logout</button>
-        </>
-      );
+      navBarOverrides.LoginButton.children = "Connect your wallet";
+      navBarOverrides.LogoutButton.style.visibility = "hidden";
     }
+
+    return <NavBar width={"100vw"} overrides={navBarOverrides} />;
+
+  }
+
+  const getDispAddress = () => {
+    let ethAddress = user.get("ethAddress");
+    let dispAddress = ethAddress.substr(0, 5) + "....." + ethAddress.slice(-5);
+    return dispAddress
   }
 
   return (
 
   <div className="App">
-    <NavBar width={"100vw"} overrides={navBarOverrides} />
-    {dispLoginInfo()}
+    {dispNavBar()}
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<List />} />
