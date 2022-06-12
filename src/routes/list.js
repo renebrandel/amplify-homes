@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useMoralis, useMoralisWeb3Api } from "react-moralis";
 import { CardNFTCollection, CardNFT } from './../ui-components'
 import { Link } from "react-router-dom";
@@ -8,23 +8,12 @@ export default function List() {
 
     // Moralis
     console.log('useMoralis start');
-    const { authenticate, isAuthenticated, isAuthenticating, user, account, logout } = useMoralis();
+    const { authenticate, isAuthenticated, isAuthenticating, user, account, logout, isInitialized } = useMoralis();
     console.log('useMoralis end');
 
     console.log('useMoralisWeb3Api start');
     const Web3Api = useMoralisWeb3Api();
     console.log('useMoralisWeb3Api end');
-
-    useEffect(() => {
-        console.log("isAuthenticated : " + isAuthenticated);
-        if (isAuthenticated) {
-            // add your logic here
-            dispNFTs();
-
-        } else {
-        }
-            // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isAuthenticated]);
 
     // LAG
     const baseNftAddress = "0x9c99d7f09d4a7e23ea4e36aec4cb590c5bbdb0e2";
@@ -32,82 +21,62 @@ export default function List() {
     // const baseNftChain = "eth";
     const tokenIdDigit = 4;
 
-    // get NFTs from connected wallet address
-    const dispNFTs = () => {
-        if (isAuthenticated) {
-            try {
-                let nfts = getNFTs();
-                console.log("dispNFTs nfts");
-                console.log(nfts);
-                return nfts;
-            } catch(e) {
-                console.log(e);
-            }
-        } else {
-            return <div id="hogehoge"></div>;
+    const [ethNFTs, setEthNFTs] = useState([]);
+
+    useEffect(() => {
+        if (isInitialized && isAuthenticated) {
+            Web3Api.Web3API.account.getNFTs()
+            .then(response => {
+                console.log("fetchEthNFTs NFTs");
+                console.log(response);
+                let nowEthNFTs = [];
+
+                console.log("response.result");
+                console.log(response.result);
+
+                if (response.result == undefined || response.result.length == 0) {
+                    setEthNFTs(nowEthNFTs);
+                    return;
+                }
+
+                for (let i = 0; i < response.result.length; i++) {
+                    let nowEthNft = response.result[i];
+                    // console.log(nowEthNft.token_address);
+                    if (nowEthNft.token_address == baseNftAddress) {
+                        // console.log("add");
+
+                        // console.log(nowEthNft.metadata);
+                        try {
+                            nowEthNft.metadata = JSON.parse(nowEthNft.metadata);
+                            nowEthNft.itemName = nowEthNft.metadata.name;
+                        } catch (error) {
+                            nowEthNft.metadata = JSON.parse(JSON.stringify(nowEthNft.metadata));
+                            nowEthNft.itemName = nowEthNft.metadata.name;
+                        }
+
+                        nowEthNft.moralisImageUri = getMoraliImageUri(nowEthNft.metadata.image);
+
+                        console.log(nowEthNft.itemName);
+                        // console.log(nowEthNft.moralisImageUri);
+
+                        nowEthNFTs.push(nowEthNft);
+                    }
+                }
+                setEthNFTs(nowEthNFTs);
+            },[])
         }
+    }, [isInitialized, isAuthenticated])
 
-    }
-
-    const getNFTs = () => {
-        // get NFTs for current user on Mainnet
-        let nfts = null;
-        Web3Api.account.getNFTs()
-        .then(nfts => {
-            nfts = renderNFTs(nfts);
-            console.log("getNFTs nfts");
-            console.log(nfts);
-            return nfts;
-        });
-    }
-
-    const renderNFTs = (nfts) => {
-
-        try {
-            console.log("renderNFTs nfts");
-            console.log(nfts);
-            console.log("renderNFTs nfts.result");
-            console.log(nfts.result);
-        } catch (e) {
-            //
-        }
-
-        if (nfts == null || nfts.result == undefined) {
-            return;
-        }
-
-        const items = [];
-
-        for (var i in nfts.result) {
-            let row = nfts.result[i];
-            // console.log(row.token_id);
-
-            if (row.token_address == baseNftAddress) {
-                var nowTokenId = zeroPadding(row.token_id, tokenIdDigit);
-                // console.log(`${row.token_id}`);
-                items.push(
-                    <CardNFT
-                        CardNFT={{
-                            token_address: row.token_address,
-                            collection_name: 'Love Addicted Girls',
-                            token_id: nowTokenId,
-                            name: row.name,
-                            image: baseNftImgHash + nowTokenId + '.png',
-                        }}
-                        height="368px"
-                        width="300px"
-                        margin="10px 10px 10px 10px" />
-                );
-            }
-        }
-        console.log("items");
-        console.log(items);
-        return items;
-
-    }
 
     function zeroPadding(token_id, zeroPaddingLength) {
         return ('000000000' + token_id).slice( zeroPaddingLength * -1 );
+    }
+
+    function getMoraliImageUri(ipfsUri) {
+        // console.log(ipfsUri);
+        let returnStr = "https://gateway.moralisipfs.com/ipfs/" + ipfsUri.substring(7);
+        // console.log(returnStr);
+        return returnStr;
     }
 
     return (
@@ -116,7 +85,22 @@ export default function List() {
                 <p className="catch-copy">Let's dress up your NFT</p>
                 <p>You can change your NFT clothes. First, select the NFT you want to dress up.</p>
             </div>
-            {dispNFTs()}
+            {ethNFTs.map((ethNft) => (
+                <Link to="/dressup">
+                    <CardNFT
+                        CardNFT={{
+                            key: ethNft.token_hash,
+                            token_address: ethNft.token_address,
+                            collection_name: ethNft.name,
+                            token_id: zeroPadding(ethNft.token_id, tokenIdDigit),
+                            name: ethNft.itemName,
+                            image: ethNft.moralisImageUri,
+                        }}
+                        height="368px"
+                        width="300px"
+                        margin="10px 10px 10px 10px" />
+                </Link>
+            ))}
             <Link to="/dressup">
                 <CardNFT
                     CardNFT={{
