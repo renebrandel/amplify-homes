@@ -2,13 +2,22 @@ body {
   background-color: #f4e8e7;
 }
 
-.amplify-collection-items > .amplify-flex {
-  transition: box-shadow ease-in-out .2s;
+/* card-list */
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card-list a {
+  display: inline-block;
+  text-decoration: none;
+}
+.card-list a > .amplify-flex {
   transform: translateY(0);
 }
-.amplify-collection-items > .amplify-flex:hover {
+.card-list a > .amplify-flex:hover {
   transform: translateY(-2px);
   box-shadow: 0 0 16px 0 rgb(0 0 0 / 20%);
+  transition: all 0.1s ease 0s;
 }
 
 /* dress-up */

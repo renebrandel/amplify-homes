@@ -85,6 +85,7 @@ export default function List() {
                 <p className="catch-copy">Let's dress up your NFT</p>
                 <p>You can change your NFT clothes. First, select the NFT you want to dress up.</p>
             </div>
+            <div class="card-list">
             {ethNFTs.map((ethNft) => (
                 <Link to="/dressup">
                     <CardNFT
@@ -101,6 +102,7 @@ export default function List() {
                         margin="10px 10px 10px 10px" />
                 </Link>
             ))}
+            </div>
             <Link to="/dressup">
                 <CardNFT
                     CardNFT={{
