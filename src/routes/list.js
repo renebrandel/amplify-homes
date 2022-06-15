@@ -16,16 +16,19 @@ export default function List() {
     console.log('useMoralisWeb3Api end');
 
     // LAG
+    const baseNftChain = "Eth";
     const baseNftAddress = "0x9c99d7f09d4a7e23ea4e36aec4cb590c5bbdb0e2";
-    const baseNftImgHash = "https://ipfs.moralis.io:2053/ipfs/QmWsNgLwBLiqGpUrhUS48ejRFAgUA92ChF6Xo45uMKWnmQ/";
-    // const baseNftChain = "eth";
     const tokenIdDigit = 4;
 
     const [ethNFTs, setEthNFTs] = useState([]);
 
     useEffect(() => {
         if (isInitialized && isAuthenticated) {
-            Web3Api.Web3API.account.getNFTs()
+            Web3Api.Web3API.account.getNFTs(
+                {
+                    chain: baseNftChain,
+                }
+            )
             .then(response => {
                 console.log("fetchEthNFTs NFTs");
                 console.log(response);
@@ -86,24 +89,28 @@ export default function List() {
                 <p>You can change your NFT clothes. First, select the NFT you want to dress up.</p>
             </div>
             <div class="card-list">
-            {ethNFTs.map((ethNft) => (
-                <Link to="/dressup">
-                    <CardNFT
-                        CardNFT={{
-                            key: ethNft.token_hash,
-                            token_address: ethNft.token_address,
-                            collection_name: ethNft.name,
-                            token_id: zeroPadding(ethNft.token_id, tokenIdDigit),
-                            name: ethNft.itemName,
-                            image: ethNft.moralisImageUri,
-                        }}
-                        height="368px"
-                        width="300px"
-                        margin="10px 10px 10px 10px" />
-                </Link>
-            ))}
+                {ethNFTs.map((ethNft) => (
+                    <Link to={`/dressup?token_chain=${baseNftChain}&token_address=${ethNft.token_address}&token_id=${ethNft.token_id}`}>
+                        <CardNFT
+                            CardNFT={{
+                                key: ethNft.token_hash,
+                                token_address: ethNft.token_address,
+                                collection_name: ethNft.name,
+                                token_id: zeroPadding(ethNft.token_id, tokenIdDigit),
+                                name: ethNft.itemName,
+                                image: ethNft.moralisImageUri,
+                            }}
+                            height="368px"
+                            width="300px"
+                            margin="10px 10px 10px 10px" />
+                    </Link>
+                ))}
             </div>
-            <Link to="/dressup">
+            {ethNFTs.length == 0 &&
+                <div style={{height: 500 + 'px'}}></div>
+            }
+
+            {/* <Link to="/dressup">
                 <CardNFT
                     CardNFT={{
                         token_address: 'aaa',
@@ -116,7 +123,7 @@ export default function List() {
                     width="300px"
                     margin="10px 10px 10px 10px" />
             </Link>
-            <CardNFTCollection itemsPerPage={20} />
+            <CardNFTCollection itemsPerPage={20} /> */}
         </>
     );
   }
