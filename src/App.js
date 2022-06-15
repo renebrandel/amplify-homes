@@ -80,7 +80,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<List />} />
-        <Route path="dressup" element={<Dressup />} />
+        <Route path="/dressup" element={<Dressup />} />
       </Routes>
     </BrowserRouter>
 

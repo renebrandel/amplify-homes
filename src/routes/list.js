@@ -90,7 +90,7 @@ export default function List() {
             </div>
             <div>
                 {ethNFTs.map((ethNft) => (
-                    <Link to="/dressup">
+                    <Link to={`/dressup?token_chain=${baseNftChain}&token_address=${ethNft.token_address}&token_id=${ethNft.token_id}`}>
                         <CardNFT
                             CardNFT={{
                                 key: ethNft.token_hash,
@@ -106,7 +106,11 @@ export default function List() {
                     </Link>
                 ))}
             </div>
-            <Link to="/dressup">
+            {ethNFTs.length == 0 &&
+                <div style={{height: 500 + 'px'}}></div>
+            }
+
+            {/* <Link to="/dressup">
                 <CardNFT
                     CardNFT={{
                         token_address: 'aaa',
@@ -119,7 +123,7 @@ export default function List() {
                     width="300px"
                     margin="10px 10px 10px 10px" />
             </Link>
-            <CardNFTCollection itemsPerPage={20} />
+            <CardNFTCollection itemsPerPage={20} /> */}
         </>
     );
   }
