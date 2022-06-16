@@ -6,10 +6,17 @@
 
 /* eslint-disable */
 import React from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import {
+  getOverrideProps,
+  useNavigateAction,
+} from "@aws-amplify/ui-react/internal";
 import { Icon } from "@aws-amplify/ui-react";
 export default function OpenSea(props) {
   const { overrides, ...rest } = props;
+  const openSeaOnClick = useNavigateAction({
+    type: "url",
+    url: "https://opensea.io/collection/love-addicted-girls",
+  });
   return (
     <Icon
       width="30px"
@@ -38,6 +45,10 @@ export default function OpenSea(props) {
           style: { transform: "translate(21%, 20%)" },
         },
       ]}
+      aria-label="OpenSea"
+      onClick={() => {
+        openSeaOnClick();
+      }}
       {...rest}
       {...getOverrideProps(overrides, "OpenSea")}
     ></Icon>

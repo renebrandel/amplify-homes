@@ -62,6 +62,12 @@ function App() {
       navBarOverrides.LogoutButton.style.visibility = "hidden";
     }
 
+    navBarOverrides.Twitter = {
+      style: {
+        cursor: "pointer"
+      },
+    };
+
     return <NavBar width={"100vw"} overrides={navBarOverrides} />;
 
   }

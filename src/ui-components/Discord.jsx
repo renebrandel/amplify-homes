@@ -6,10 +6,17 @@
 
 /* eslint-disable */
 import React from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import {
+  getOverrideProps,
+  useNavigateAction,
+} from "@aws-amplify/ui-react/internal";
 import { Icon, View } from "@aws-amplify/ui-react";
 export default function Discord(props) {
   const { overrides, ...rest } = props;
+  const groupOnClick = useNavigateAction({
+    type: "url",
+    url: "https://discord.gg/Soudan",
+  });
   return (
     <View
       width="30px"
@@ -27,6 +34,10 @@ export default function Discord(props) {
         bottom="0.86%"
         left="0%"
         right="0%"
+        label="Discord"
+        onClick={() => {
+          groupOnClick();
+        }}
         {...getOverrideProps(overrides, "Group")}
       >
         <Icon

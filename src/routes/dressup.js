@@ -24,8 +24,8 @@ export default function Dressup(props) {
         <div class="card card__dress-up">
           <div class="card__dress-up--header">
             <div>
+              <Link to={`/`} class="back-link">←Change NFT</Link>
               <h1 class="card__dress-up--title">Outfit Room</h1>
-              <a href="/" class="back-link">←Change NFT</a>
             </div>
             <button>↓ Download</button>
           </div>
