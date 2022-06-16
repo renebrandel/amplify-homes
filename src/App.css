@@ -27,3 +27,7 @@
 .App-link {
   color: #61dafb;
 }
+
+.ext-link:hover {
+  cursor: pointer;
+}

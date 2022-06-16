@@ -1,24 +1,37 @@
 import './App.css';
 import React, { useEffect } from 'react';
 import { NavBar, MarketingFooter } from './ui-components'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { useMoralis } from "react-moralis";
 import Dressup from "./routes/dressup";
 import List from './routes/list';
 
 function App() {
 
+
   const { authenticate, isAuthenticated, isAuthenticating, user, account, logout } = useMoralis();
 
   const navBarOverrides = {
     "LoginButton": {
-      onClick: (event) => { logIn() },
       style: { visibility: "visible" },
       children: "Connect your wallet",
     },
     "LogoutButton": {
       onClick: (event) => { logOut() },
       style: { visibility: "hidden" },
+    },
+    "logo-dressupnft": {
+      onClick: (event) => { window.location.href = "/"; },
+      className: "ext-link",
+    },
+    "logo-twitter": {
+      className: "ext-link",
+    },
+    "logo-discord": {
+      className: "ext-link",
+    },
+    "logo-openSea": {
+      className: "ext-link",
     },
   };
 
@@ -64,9 +77,9 @@ function App() {
 
     navBarOverrides.Twitter = {
       style: {
-        cursor: "pointer"
-      },
-    };
+        hover: {cursor: 'pointer'},
+      }
+    }
 
     return <NavBar width={"100vw"} overrides={navBarOverrides} />;
 
@@ -82,8 +95,8 @@ function App() {
   return (
 
   <div className="App">
-    {dispNavBar()}
     <BrowserRouter>
+      {dispNavBar()}
       <Routes>
         <Route path="/" element={<List />} />
         <Route path="/dressup" element={<Dressup />} />
