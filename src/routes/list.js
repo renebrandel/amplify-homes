@@ -16,13 +16,13 @@ export default function List() {
 
     return (
         <>
-            <div className="mv">
+            <div className="mv" key={'mv1'}>
                 <p className="catch-copy">Let's dress up your NFT</p>
                 <p>You can change your NFT clothes. First, select the NFT you want to dress up.</p>
             </div>
-            <div>
+            <div className="mv" key={'mv2'} style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', padding: '1em'}}>
                 {ethNFTs.map((ethNFT) => (
-                    <Link to={`/dressup?token_chain=${ethNFT.token_chain}&token_address=${ethNFT.token_address}&token_id=${ethNFT.token_id}`}>
+                    <Link to={`/dressup?token_chain=${ethNFT.token_chain}&token_address=${ethNFT.token_address}&token_id=${ethNFT.token_id}`} style={{textDecoration: 'none'}}>
                         <CardNFT
                             CardNFT={{
                                 key: ethNFT.token_hash,

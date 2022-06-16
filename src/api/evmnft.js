@@ -16,7 +16,6 @@ export default function useEthNFTs() {
     // LAG
     const baseNftChain = "Eth";
     const baseNftAddress = "0x9c99d7f09d4a7e23ea4e36aec4cb590c5bbdb0e2";
-    const tokenIdDigit = 4;
 
     const [ethNFTs, setEthNFTs] = useState([]);
 
@@ -83,8 +82,8 @@ export function useEthNFT(token_address, token_id) {
 
     const ethNFTs = useEthNFTs();
 
-    for (let i = 0; i < ethNFTs.result.length; i++) {
-        let nowEthNft = ethNFTs.result[i];
+    for (let i = 0; i < ethNFTs.length; i++) {
+        let nowEthNft = ethNFTs[i];
         // console.log(nowEthNft.token_address);
         if (nowEthNft.token_address == token_address
               && nowEthNft.token_id == token_id) {
