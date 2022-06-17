@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useMoralis, useMoralisWeb3Api } from "react-moralis";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEthNFT } from '../api/evmnft';
-import { ButtonGroup } from '@aws-amplify/ui-react';
+import { ButtonGroup, Image } from '@aws-amplify/ui-react';
 
 export default function Dressup(props) {
 
@@ -25,6 +25,7 @@ export default function Dressup(props) {
     const [dressUpPicFaceUrl, setDressUpPicFaceUrl] = useState([]);
     const [dressUpPicBodyUrl, setDressUpPicBodyUrl] = useState([]);
     const [dressUpPicFronthairUrl, setDressUpPicFronthairUrl] = useState([]);
+    const [dressUpPicVailStyle, setDressUpPicVailStyle] = useState([]);
 
     useEffect(() => {
       window.scrollTo(0, 0)
@@ -45,8 +46,10 @@ export default function Dressup(props) {
         setDressUpPicFaceUrl(getImageUrl("face", nowSelectedAttributes.Face));
         setDressUpPicFronthairUrl(getImageUrl("fronthair", nowSelectedAttributes.Hair));
 
-        // console.log("selectedAttributes.Background");
-        // console.log(selectedAttributes.Background);
+        setDressUpPicVailStyle({backgroundColor: 'transparent'});
+
+      } else {
+        setDressUpPicVailStyle({backgroundColor: 'lightgray'});
       }
     }, [selectedEthNFT]);
 
@@ -95,7 +98,8 @@ export default function Dressup(props) {
                     <img className="dress-up-pic" src={dressUpPicBackhairUrl} />
                     <img className="dress-up-pic" src={dressUpPicBodyUrl} />
                     <img className="dress-up-pic" src={dressUpPicFaceUrl} />
-                    <img className="dress-up-pic" src={dressUpPicFronthairUrl} />
+                    <img className="dress-up-pic" src={dressUpPicFronthairUrl} onLoad={() => {}} />
+                    <div id="dress-up-pic-vail" width="400" height="400" className='dress-up-pic' style={dressUpPicVailStyle} />
                   </div>
                   
                   <p class="card__dress-up--pj">{`${selectedEthNFT.name}`}</p>

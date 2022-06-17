@@ -41,6 +41,7 @@
 .dress-up-pic-background {
   position: relative;
   width: 100%;
+  height: 100%;
 }
 
 .dress-up-pic {
@@ -48,4 +49,5 @@
   bottom: 0px;
   left: 0px;
   width: 100%;
+  height: 100%;
 }

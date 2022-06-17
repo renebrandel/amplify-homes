@@ -7,9 +7,6 @@ import useEthNFTs from '../api/evmnft';
 
 export default function List() {
 
-    // LAG
-    const baseNftChain = "Eth";
-
     const ethNFTs = useEthNFTs();
     console.log("ethNFTs");
     console.log(ethNFTs);
