@@ -31,3 +31,21 @@
 .ext-link:hover {
   cursor: pointer;
 }
+
+#dress-up-window {
+  position: relative;
+  display: flex;
+  width: 400px;
+}
+
+.dress-up-pic-background {
+  position: relative;
+  width: 100%;
+}
+
+.dress-up-pic {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+}

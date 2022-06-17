@@ -13,6 +13,7 @@ function App() {
 
   const navBarOverrides = {
     "LoginButton": {
+      onClick: (event) => { logIn() },
       style: { visibility: "visible" },
       children: "Connect your wallet",
     },
