@@ -48,7 +48,7 @@ export default function NavBar(props) {
           shrink="0"
           position="relative"
           padding="0px 0px 0px 0px"
-          src="logo-and-title.png"
+          src="/logo-and-title.png"
           onClick={() => {
             logodressupnftOnClick();
           }}
