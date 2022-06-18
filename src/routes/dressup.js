@@ -101,10 +101,16 @@ export default function Dressup(props) {
     const onClickExport = () => {
       // 画像に変換する component の id を指定
       const target = document.getElementById("dress-up-window");
+      const area = target.getBoundingClientRect();
+
+console.log(area.width + ", " + area.height);
+
       html2canvas(target, {
         useCORS: true,
-        width: 400,
-        height: 400,
+        scrollX: 0,
+        scrollY: 0,
+        width: area.width,
+        height: area.height,
         onrendered: function (canvas) {
           document.body.appendChild(canvas);
         },
