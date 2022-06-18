@@ -9,6 +9,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "aws-amplify": "^4.3.24",
+    "html2canvas": "^1.4.1",
     "moralis": "^1.8.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

@@ -3,6 +3,7 @@ import { useMoralis, useMoralisWeb3Api } from "react-moralis";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEthNFT } from '../api/evmnft';
 import { ButtonGroup, Image } from '@aws-amplify/ui-react';
+import html2canvas from "html2canvas";
 
 export default function Dressup(props) {
 
@@ -75,7 +76,44 @@ export default function Dressup(props) {
       }
     }
 
-
+    const saveAsImage = uri => {
+      const downloadLink = document.createElement("a");
+    
+      if (typeof downloadLink.download === "string") {
+        downloadLink.href = uri;
+    
+        // ファイル名
+        downloadLink.download = "dressup.png";
+    
+        // Firefox では body の中にダウンロードリンクがないといけないので一時的に追加
+        document.body.appendChild(downloadLink);
+    
+        // ダウンロードリンクが設定された a タグをクリック
+        downloadLink.click();
+    
+        // Firefox 対策で追加したリンクを削除しておく
+        document.body.removeChild(downloadLink);
+      } else {
+        window.open(uri);
+      }
+    }
+    
+    const onClickExport = () => {
+      // 画像に変換する component の id を指定
+      const target = document.getElementById("dress-up-window");
+      html2canvas(target, {
+        useCORS: true,
+        width: 400,
+        height: 400,
+        onrendered: function (canvas) {
+          document.body.appendChild(canvas);
+        },
+      }).then(canvas => {
+        const targetImgUri = canvas.toDataURL("img/png");
+        saveAsImage(targetImgUri);
+      });
+    }
+    
   return (
       <>
         <div class="card card__dress-up">
@@ -84,7 +122,7 @@ export default function Dressup(props) {
               <Link to={`/`} class="back-link">←Change NFT</Link>
               <h1 class="card__dress-up--title">Outfit Room</h1>
             </div>
-            <button>↓ Download</button>
+            <button onClick={onClickExport}>↓ Download</button>
           </div>
           <div class="card__dress-up--change">
             <div class="card__dress-up--image">
