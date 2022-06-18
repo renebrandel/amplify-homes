@@ -6,10 +6,17 @@
 
 /* eslint-disable */
 import React from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import {
+  getOverrideProps,
+  useNavigateAction,
+} from "@aws-amplify/ui-react/internal";
 import { Icon, View } from "@aws-amplify/ui-react";
 export default function Twitter(props) {
   const { overrides, ...rest } = props;
+  const logoUnderScoreOneUnderScoreOnClick = useNavigateAction({
+    type: "url",
+    url: "https://twitter.com/SoudanNFT",
+  });
   return (
     <View
       width="30px"
@@ -27,6 +34,10 @@ export default function Twitter(props) {
         bottom="1.22%"
         left="0.4%"
         right="0.34%"
+        label="Twitter"
+        onClick={() => {
+          logoUnderScoreOneUnderScoreOnClick();
+        }}
         {...getOverrideProps(overrides, "Logo_1_")}
       >
         <Icon

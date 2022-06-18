@@ -6,13 +6,17 @@
 
 /* eslint-disable */
 import React from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import {
+  getOverrideProps,
+  useNavigateAction,
+} from "@aws-amplify/ui-react/internal";
 import { Button, Flex, Image, Text } from "@aws-amplify/ui-react";
 import Twitter from "./Twitter";
 import Discord from "./Discord";
 import OpenSea from "./OpenSea";
 export default function NavBar(props) {
   const { overrides, ...rest } = props;
+  const logodressupnftOnClick = useNavigateAction({ type: "url", url: "" });
   return (
     <Flex
       gap="40px"
@@ -44,7 +48,10 @@ export default function NavBar(props) {
           shrink="0"
           position="relative"
           padding="0px 0px 0px 0px"
-          src="logo-and-title.png"
+          src="/logo-and-title.png"
+          onClick={() => {
+            logodressupnftOnClick();
+          }}
           {...getOverrideProps(overrides, "logo-dressupnft")}
         ></Image>
       </Flex>

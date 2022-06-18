@@ -19,12 +19,14 @@ export default function CardNFTCollection(props) {
   const itemsPagination = {
     sort: (s) => s.createdAt(SortDirection.DESCENDING),
   };
-  const itemsDataStore = useDataStoreBinding({
-    type: "collection",
-    model: NFT,
-    pagination: itemsPagination,
-  }).items;
-  const items = itemsProp !== undefined ? itemsProp : itemsDataStore;
+  const items =
+    itemsProp !== undefined
+      ? itemsProp
+      : useDataStoreBinding({
+          type: "collection",
+          model: NFT,
+          pagination: itemsPagination,
+        }).items;
   return (
     <Collection
       type="grid"
