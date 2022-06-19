@@ -138,11 +138,11 @@ console.log(area.width + ", " + area.height);
                     {/* <img className="dress-up-pic" src={`${selectedEthNFT.moralisImageUri}`} /> */}
                     <img className="dress-up-pic-background" src="/none.png"/>
                     {/* <img className="dress-up-pic" src="https://love-addicted-girls-test.s3.ap-northeast-3.amazonaws.com/gen-res/LAG/parts/background/%5BR%5DBlue+Pinstripe2.png" /> */}
-                    <img className="dress-up-pic" src={dressUpPicBackgroundUrl} />
-                    <img className="dress-up-pic" src={dressUpPicBackhairUrl} />
-                    <img className="dress-up-pic" src={dressUpPicBodyUrl} />
-                    <img className="dress-up-pic" src={dressUpPicFaceUrl} />
-                    <img className="dress-up-pic" src={dressUpPicFronthairUrl} onLoad={() => {}} />
+                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPicBackgroundUrl} />
+                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPicBackhairUrl} />
+                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPicBodyUrl} />
+                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPicFaceUrl} />
+                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPicFronthairUrl} />
                     <div id="dress-up-pic-vail" width="400" height="400" className='dress-up-pic' style={dressUpPicVailStyle} />
                   </div>
                   
