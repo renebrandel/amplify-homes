@@ -63,8 +63,9 @@ body {
 .card__dress-up--image {
   margin-right: 30px;
 }
-.card__dress-up--image img {
+.dress-up-window {
   border-radius: 20px;
+  overflow: hidden;
 }
 .card__dress-up--pj {
   margin: 0;
