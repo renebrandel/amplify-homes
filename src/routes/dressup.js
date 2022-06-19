@@ -8,6 +8,7 @@ import html2canvas from "html2canvas";
 export default function Dressup(props) {
 
     const query = new URLSearchParams(useLocation().search);
+    const selectedChain = query.get('token_chain');
     const selectedNftAddress = query.get('token_address');
     const selectedTokenId = query.get('token_id');
 
@@ -19,7 +20,7 @@ export default function Dressup(props) {
 
     const [selectedAttributes, setSelectedAttributes] = useState([]);
 
-    const partsBaseUrl = "https://love-addicted-girls-test.s3.ap-northeast-3.amazonaws.com/gen-res/LAG/parts/";
+    const partsBaseUrl = "https://love-addicted-girls-test.s3.ap-northeast-3.amazonaws.com/gen-res/";
 
     const [dressUpPicBackgroundUrl, setDressUpPicBackgroundUrl] = useState([]);
     const [dressUpPicBackhairUrl, setDressUpPicBackhairUrl] = useState([]);
@@ -47,6 +48,11 @@ export default function Dressup(props) {
         setDressUpPicFaceUrl(getImageUrl("face", nowSelectedAttributes.Face));
         setDressUpPicFronthairUrl(getImageUrl("fronthair", nowSelectedAttributes.Hair));
 
+        if (nowSelectedAttributes.Hair == undefined) {
+          // LAG以外の場合、暫定的にbackhairに元の画像を入れる
+          setDressUpPicBackhairUrl(selectedEthNFT.moralisImageUri);
+        }
+
         setDressUpPicVailStyle({backgroundColor: 'transparent'});
 
       } else {
@@ -72,7 +78,11 @@ export default function Dressup(props) {
       if (value == null || value == "" || value == "none") {
         return "/none.png";
       } else {
-        return partsBaseUrl + type + "/" + value + ".png";
+        if (value.startsWith("CNP") || value.startsWith("LAG")) {
+          return partsBaseUrl + value.substr(0, 3) + "/parts/" + type + "/" + value.substr(4) + ".png";
+        } else {
+          return partsBaseUrl + "LAG/parts/" + type + "/" + value + ".png";
+        }
       }
     }
 
@@ -164,11 +174,39 @@ export default function Dressup(props) {
                 <dt>Background</dt>
                 <dd>
                   <ButtonGroup aria-label="Background-btn" style={{flexWrap: 'wrap'}} onClick={onClickBackground}>
-                    <button value={selectedAttributes.Background}>{selectedAttributes.Background}</button>
                     <button value="none">none</button>
-                    <button value="Blue Pinstripe">Blue Pinstripe</button>
-                    <button value="Pink Pinstripe">Pink Pinstripe</button>
-                    <button value="Violet Pinstripe">Violet Pinstripe</button>
+                    {selectedEthNFT != null && selectedEthNFT.symbol == "LAG" &&
+                      <>
+                        <button value={selectedAttributes.Background}>{selectedAttributes.Background}</button>
+                        <button value="LAG Blue Pinstripe">Blue Pinstripe</button>
+                        <button value="LAG Pink Pinstripe">Pink Pinstripe</button>
+                        <button value="LAG Violet Pinstripe">Violet Pinstripe</button>
+                      </>
+                    }
+                    {selectedEthNFT != null && selectedEthNFT.symbol == "CNP" &&
+                      <>
+                        <button value="CNP back_01_001">Standard01</button>
+                        <button value="CNP back_01_002">Standard02</button>
+                        <button value="CNP back_01_003">Standard03</button>
+                        <button value="CNP back_01_004">Standard04</button>
+                        <button value="CNP back_01_005">Standard05</button>
+                        <button value="CNP back_01_006">Standard06</button>
+                        <button value="CNP back_01_007">Standard07</button>
+                        <button value="CNP back_01_008">Standard08</button>
+                        <button value="CNP back_01_009">Standard09</button>
+                        <button value="CNP back_01_010">Standard10</button>
+                        <button value="CNP back_02_001">Choppy sea01</button>
+                        <button value="CNP back_02_002">Choppy sea02</button>
+                        <button value="CNP back_02_003">Choppy sea03</button>
+                        <button value="CNP back_02_004">Choppy sea04</button>
+                        <button value="CNP back_02_005">Choppy sea05</button>
+                        <button value="CNP back_02_006">Choppy sea06</button>
+                        <button value="CNP back_02_007">Choppy sea07</button>
+                        <button value="CNP back_02_008">Choppy sea08</button>
+                        <button value="CNP back_02_009">Choppy sea09</button>
+                        <button value="CNP back_02_010">Choppy sea10</button>
+                      </>
+                    }
                   </ButtonGroup>
                 </dd>
               </dl>

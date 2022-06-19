@@ -14,18 +14,16 @@ export default function useEthNFTs() {
     console.log('useMoralisWeb3Api end');
 
     // LAG
-    const baseNftChain = "Eth";
-    const baseNftAddress = "0x9c99d7f09d4a7e23ea4e36aec4cb590c5bbdb0e2";
+    const baseNFTChains = [
+        "0x9c99d7f09d4a7e23ea4e36aec4cb590c5bbdb0e2",
+        "0x845a007d9f283614f403a24e3eb3455f720559ca",
+    ];
 
     const [ethNFTs, setEthNFTs] = useState([]);
 
     useEffect(() => {
         if (isInitialized && isAuthenticated) {
-            Web3Api.Web3API.account.getNFTs(
-                {
-                    chain: baseNftChain,
-                }
-            )
+            Web3Api.Web3API.account.getNFTs()
             .then(response => {
                 console.log("fetchEthNFTs NFTs");
                 console.log(response);
@@ -42,7 +40,7 @@ export default function useEthNFTs() {
                 for (let i = 0; i < response.result.length; i++) {
                     let nowEthNft = response.result[i];
                     // console.log(nowEthNft.token_address);
-                    if (nowEthNft.token_address == baseNftAddress) {
+                    if (baseNFTChains.indexOf(nowEthNft.token_address) != -1) {
                         // console.log("add");
 
                         // console.log(nowEthNft.metadata);
@@ -54,8 +52,14 @@ export default function useEthNFTs() {
                             nowEthNft.itemName = nowEthNft.metadata.name;
                         }
 
-                        nowEthNft.token_chain = baseNftChain;
-                        nowEthNft.moralisImageUri = getMoraliImageUri(nowEthNft.metadata.image);
+                        nowEthNft.itemName = nowEthNft.metadata.name;
+                        if (nowEthNft.metadata.image.startsWith("ipfs://")) {
+                            nowEthNft.moralisImageUri = getMoraliImageUri(nowEthNft.metadata.image);
+                        } else {
+                            nowEthNft.moralisImageUri = nowEthNft.metadata.image;
+                        }
+
+                        nowEthNft.token_chain = "Eth";
 
                         console.log(nowEthNft.itemName);
                         // console.log(nowEthNft.moralisImageUri);

@@ -11,6 +11,12 @@ export default function List() {
     console.log("ethNFTs");
     console.log(ethNFTs);
 
+    const cardNFTOverrides = {
+        "image": {
+          crossOrigin: "anonymous",
+        },
+    }
+
     return (
         <>
             <div className="mv" key={'mv1'}>
@@ -30,7 +36,8 @@ export default function List() {
                             }}
                             height="368px"
                             width="300px"
-                            margin="10px 10px 10px 10px" />
+                            margin="10px 10px 10px 10px"
+                            overrides={ethNFT.symbol != "LAG" && cardNFTOverrides} />
                     </Link>
                 ))}
             </div>
