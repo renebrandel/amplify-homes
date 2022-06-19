@@ -103,8 +103,6 @@ export default function Dressup(props) {
       const target = document.getElementById("dress-up-window");
       const area = target.getBoundingClientRect();
 
-console.log(area.width + ", " + area.height);
-
       html2canvas(target, {
         useCORS: true,
         scrollX: 0,
@@ -114,6 +112,7 @@ console.log(area.width + ", " + area.height);
         onrendered: function (canvas) {
           document.body.appendChild(canvas);
         },
+        backgroundColor :null,
       }).then(canvas => {
         const targetImgUri = canvas.toDataURL("img/png");
         saveAsImage(targetImgUri);
