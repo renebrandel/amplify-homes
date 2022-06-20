@@ -7,6 +7,8 @@ import useEthNFTs from '../api/evmnft';
 
 export default function List() {
 
+    const { authenticate, isAuthenticated, isAuthenticating, user, account, logout } = useMoralis();
+
     const ethNFTs = useEthNFTs();
     console.log("ethNFTs");
     console.log(ethNFTs);
@@ -43,6 +45,11 @@ export default function List() {
                 ))}
               </div>
             </div>
+            {isAuthenticated && ethNFTs.length == 0 &&
+                <div className="mv" key={'mv4'} style={{marginTop: '2em'}}>
+                    <p>To enjoy the dress-up, please purchase <a href="https://opensea.io/collection/love-addicted-girls">Love Addicted Girls</a> or <a href="https://opensea.io/collection/cryptoninjapartners">CryptoNinja Partners</a> first.</p>
+                </div>
+            }
             {ethNFTs.length == 0 &&
                 <div style={{height: 300 + 'px'}}></div>
             }
