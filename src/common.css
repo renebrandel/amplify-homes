@@ -71,8 +71,9 @@ button:hover {
   min-width: 400px;
   margin: 0 30px 30px 0;
 }
-.card__dress-up--image img {
+.dress-up-window {
   border-radius: 20px;
+  overflow: hidden;
 }
 .card__dress-up--pj {
   margin: 0;
