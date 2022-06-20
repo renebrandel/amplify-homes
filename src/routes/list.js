@@ -58,20 +58,6 @@ export default function List() {
                 <p>Please contact <a href='https://twitter.com/syunduel'>shunichiro.icp(@syunduel)</a> to report bugs, request improvements, or discuss adding collections.</p>
             </div>
 
-            {/* <Link to="/dressup">
-                <CardNFT
-                    CardNFT={{
-                        token_address: 'aaa',
-                        collection_name: 'Love Addicted Girls',
-                        token_id: 'aaa',
-                        name: 'LAG#0167',
-                        image: 'https://ipfs.moralis.io:2053/ipfs/QmWsNgLwBLiqGpUrhUS48ejRFAgUA92ChF6Xo45uMKWnmQ/0167.png',
-                    }}
-                    height="368px"
-                    width="300px"
-                    margin="10px 10px 10px 10px" />
-            </Link>
-            <CardNFTCollection itemsPerPage={20} /> */}
         </>
     );
   }
