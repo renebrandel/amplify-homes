@@ -42,8 +42,12 @@ export default function List() {
                 ))}
             </div>
             {ethNFTs.length == 0 &&
-                <div style={{height: 500 + 'px'}}></div>
+                <div style={{height: 300 + 'px'}}></div>
             }
+            <div className="mv" key={'mv3'} style={{marginTop: '2em'}}>
+                <p>Dress Up NFT is currently in beta version.</p>
+                <p>Please contact <a href='https://twitter.com/syunduel'>shunichiro.icp(@syunduel)</a> to report bugs, request improvements, or discuss adding collections.</p>
+            </div>
 
             {/* <Link to="/dressup">
                 <CardNFT
