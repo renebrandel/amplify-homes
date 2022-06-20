@@ -21,8 +21,6 @@ button:hover {
 
 /* card-list */
 .card-list {
-  display: flex;
-  flex-wrap: wrap;
   margin: 0 20px 60px;
 }
 .card-list a {
