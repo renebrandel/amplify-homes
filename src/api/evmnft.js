@@ -56,7 +56,12 @@ export default function useEthNFTs() {
                         if (nowEthNft.metadata.image.startsWith("ipfs://")) {
                             nowEthNft.moralisImageUri = getMoraliImageUri(nowEthNft.metadata.image);
                         } else {
-                            nowEthNft.moralisImageUri = nowEthNft.metadata.image;
+                            if (nowEthNft.symbol == "CNP") {
+                                // CNPは画像をうちのS3に置いてある。何故か読み込めない時があったので。
+                                nowEthNft.moralisImageUri = `https://love-addicted-girls-test.s3.ap-northeast-3.amazonaws.com/gen-res/CNP/pics/${nowEthNft.token_id}.png`
+                            } else {
+                                nowEthNft.moralisImageUri = nowEthNft.metadata.image;
+                            }
                         }
 
                         nowEthNft.token_chain = "Eth";
