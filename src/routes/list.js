@@ -47,7 +47,7 @@ export default function List() {
             </div>
             {isAuthenticated && ethNFTs.length == 0 &&
                 <div className="mv" key={'mv4'} style={{marginTop: '2em'}}>
-                    <p>To enjoy the dress-up, please purchase <a href="https://opensea.io/collection/love-addicted-girls">Love Addicted Girls</a> or <a href="https://opensea.io/collection/cryptoninjapartners">CryptoNinja Partners</a> first.</p>
+                    <p>To enjoy the dress up, please purchase <a href="https://opensea.io/collection/love-addicted-girls">Love Addicted Girls</a> or <a href="https://opensea.io/collection/cryptoninjapartners">CryptoNinja Partners</a> first.</p>
                 </div>
             }
             {ethNFTs.length == 0 &&
