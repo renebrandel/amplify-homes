@@ -181,6 +181,9 @@ export default function Dressup(props) {
                         <button value="LAG Blue Pinstripe">Blue Pinstripe</button>
                         <button value="LAG Pink Pinstripe">Pink Pinstripe</button>
                         <button value="LAG Violet Pinstripe">Violet Pinstripe</button>
+                        <button value="LAG AstarCats1139">AstarCats1139</button>
+                        <button value="LAG AstarCats2377">AstarCats2377</button>
+                        <button value="LAG AstarCats6730">AstarCats6730</button>
                       </>
                     }
                     {selectedEthNFT != null && selectedEthNFT.symbol == "CNP" &&
