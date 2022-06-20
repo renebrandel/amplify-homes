@@ -24,6 +24,7 @@ export default function List() {
                 <p>You can change your NFT clothes. First, select the NFT you want to dress up.</p>
             </div>
             <div className="mv" key={'mv2'} style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', padding: '1em'}}>
+              <div class="card-list">
                 {ethNFTs.map((ethNFT) => (
                     <Link to={`/dressup?token_chain=${ethNFT.token_chain}&token_address=${ethNFT.token_address}&token_id=${ethNFT.token_id}`} style={{textDecoration: 'none'}}>
                         <CardNFT
@@ -40,6 +41,7 @@ export default function List() {
                             overrides={ethNFT.symbol != "LAG" && cardNFTOverrides} />
                     </Link>
                 ))}
+              </div>
             </div>
             {ethNFTs.length == 0 &&
                 <div style={{height: 500 + 'px'}}></div>
