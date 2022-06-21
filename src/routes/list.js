@@ -60,7 +60,7 @@ export default function List() {
                 ))}
               </div>
             </div>
-            {isAuthenticated && ethNFTs.length === 0 && ethNFTsAll.length === 0 && isloaded == undefined &&
+            {isAuthenticated && ethNFTs.length === 0 && ethNFTsAll.length === 0 && !isloaded &&
                 <div className="mv" key={'mv4'} style={{marginTop: '2em'}}>
                     <p>Now loading the NFT you have...</p>
                 </div>

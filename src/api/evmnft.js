@@ -21,6 +21,7 @@ export default function useEthNFTs() {
 
     const [ethNFTs, setEthNFTs] = useState([]);
     const [ethNFTsAll, setEthNFTsAll] = useState([]);
+    const isLoaded = false;
 
     useEffect(() => {
         if (isInitialized && isAuthenticated) {
@@ -93,11 +94,11 @@ export default function useEthNFTs() {
                 }
                 setEthNFTs(nowEthNFTs);
                 setEthNFTsAll(nowEthNFTsAll);
+                isLoaded = true;
             },[])
         }
     }, [isInitialized, isAuthenticated])
 
-    const isLoaded = true;
     return [ethNFTs, ethNFTsAll, isLoaded];
 
     function getMoraliImageUri(ipfsUri) {
@@ -115,8 +116,8 @@ export function useEthNFT(token_address, token_id) {
     for (let i = 0; i < ethNFTs.length; i++) {
         let nowEthNft = ethNFTs[i];
         // console.log(nowEthNft.token_address);
-        if (nowEthNft.token_address == token_address
-              && nowEthNft.token_id == token_id) {
+        if (nowEthNft.token_address === token_address
+              && nowEthNft.token_id === token_id) {
             
             return nowEthNft;
         }
