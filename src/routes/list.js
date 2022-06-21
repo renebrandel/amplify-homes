@@ -9,14 +9,29 @@ export default function List() {
 
     const { authenticate, isAuthenticated, isAuthenticating, user, account, logout } = useMoralis();
 
-    const ethNFTs = useEthNFTs();
+    const [ethNFTs, ethNFTsAll, isloaded] = useEthNFTs();
     console.log("ethNFTs");
     console.log(ethNFTs);
+    console.log("ethNFTsAll");
+    console.log(ethNFTsAll);
+    console.log("isloaded");
+    console.log(isloaded);
 
     const cardNFTOverrides = {
         "image": {
           crossOrigin: "anonymous",
         },
+    }
+
+    const getOtherNFTs = () => {
+        let otherNFTsStr = "";
+        ethNFTsAll.forEach(nowNFT => {
+            if (otherNFTsStr !== "") {
+                otherNFTsStr = otherNFTsStr + ", ";
+            }
+            otherNFTsStr = otherNFTsStr + nowNFT.itemName;
+        });
+        return otherNFTsStr;
     }
 
     return (
@@ -40,17 +55,29 @@ export default function List() {
                             height="368px"
                             width="300px"
                             margin="10px 10px 10px 10px"
-                            overrides={ethNFT.symbol != "LAG" && cardNFTOverrides} />
+                            overrides={ethNFT.symbol !== "LAG" && cardNFTOverrides} />
                     </Link>
                 ))}
               </div>
             </div>
-            {isAuthenticated && ethNFTs.length == 0 &&
+            {isAuthenticated && ethNFTs.length === 0 && ethNFTsAll.length === 0 && isloaded == undefined &&
                 <div className="mv" key={'mv4'} style={{marginTop: '2em'}}>
+                    <p>Now loading the NFT you have...</p>
+                </div>
+            }
+            {isAuthenticated && ethNFTs.length === 0 && ethNFTsAll.length === 0 && isloaded &&
+                <div className="mv" key={'mv4'} style={{marginTop: '2em'}}>
+                    <p>NFT not found for your wallet address</p>
+                </div>
+            }
+            {isAuthenticated && ethNFTs.length === 0 && ethNFTsAll.length !== 0 &&
+                <div className="mv" key={'mv4'} style={{marginTop: '2em'}}>
+                    <p>NFT not found for the dress-up target. Here is what we found... </p>
+                    <p>{getOtherNFTs()}</p>
                     <p>To enjoy the dress up, please purchase <a href="https://opensea.io/collection/love-addicted-girls">Love Addicted Girls</a> or <a href="https://opensea.io/collection/cryptoninjapartners">CryptoNinja Partners</a> first.</p>
                 </div>
             }
-            {ethNFTs.length == 0 &&
+            {ethNFTs.length === 0 &&
                 <div style={{height: 300 + 'px'}}></div>
             }
             <div className="mv" key={'mv3'} style={{marginTop: '2em'}}>

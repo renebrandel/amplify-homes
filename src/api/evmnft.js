@@ -20,14 +20,18 @@ export default function useEthNFTs() {
     ];
 
     const [ethNFTs, setEthNFTs] = useState([]);
+    const [ethNFTsAll, setEthNFTsAll] = useState([]);
 
     useEffect(() => {
         if (isInitialized && isAuthenticated) {
-            Web3Api.Web3API.account.getNFTs()
+            Web3Api.Web3API.account.getNFTs({
+                chain: "Eth",
+            })
             .then(response => {
                 console.log("fetchEthNFTs NFTs");
                 console.log(response);
-                let nowEthNFTs = [];
+                const nowEthNFTs = [];
+                const nowEthNFTsAll = [];
 
                 console.log("response.result");
                 console.log(response.result);
@@ -38,46 +42,63 @@ export default function useEthNFTs() {
                 }
 
                 for (let i = 0; i < response.result.length; i++) {
-                    let nowEthNft = response.result[i];
+                    const nowEthNft = response.result[i];
                     // console.log(nowEthNft.token_address);
-                    if (baseNFTChains.indexOf(nowEthNft.token_address) != -1) {
-                        // console.log("add");
 
-                        // console.log(nowEthNft.metadata);
+                    // console.log(nowEthNft.metadata);
+                    if (nowEthNft.metadata !== undefined) {
+
                         try {
                             nowEthNft.metadata = JSON.parse(nowEthNft.metadata);
-                            nowEthNft.itemName = nowEthNft.metadata.name;
                         } catch (error) {
                             nowEthNft.metadata = JSON.parse(JSON.stringify(nowEthNft.metadata));
+                        }
+                        if (nowEthNft.metadata !== null && nowEthNft.metadata.name !== undefined) {
                             nowEthNft.itemName = nowEthNft.metadata.name;
+                        } else {
+                            nowEthNft.itemName = `${nowEthNft.symbol}_${nowEthNft.token_id}`;
                         }
 
-                        nowEthNft.itemName = nowEthNft.metadata.name;
-                        if (nowEthNft.metadata.image.startsWith("ipfs://")) {
-                            nowEthNft.moralisImageUri = getMoraliImageUri(nowEthNft.metadata.image);
+                        if (nowEthNft.metadata === null || nowEthNft.metadata.image === undefined) {
+                            nowEthNft.moralisImageUri = "";
                         } else {
-                            if (nowEthNft.symbol == "CNP") {
-                                // CNPは画像をうちのS3に置いてある。何故か読み込めない時があったので。
-                                nowEthNft.moralisImageUri = `https://love-addicted-girls-test.s3.ap-northeast-3.amazonaws.com/gen-res/CNP/pics/${nowEthNft.token_id}.png`
+                            if (nowEthNft.metadata.image.startsWith("ipfs://")) {
+                                nowEthNft.moralisImageUri = getMoraliImageUri(nowEthNft.metadata.image);
                             } else {
-                                nowEthNft.moralisImageUri = nowEthNft.metadata.image;
+                                if (nowEthNft.symbol == "CNP") {
+                                    // CNPは画像をうちのS3に置いてある。何故か読み込めない時があったので。
+                                    nowEthNft.moralisImageUri = `https://love-addicted-girls-test.s3.ap-northeast-3.amazonaws.com/gen-res/CNP/pics/${nowEthNft.token_id}.png`
+                                } else {
+                                    nowEthNft.moralisImageUri = nowEthNft.metadata.image;
+                                }
                             }
                         }
+                    } else {
+                        nowEthNft.itemName = `${nowEthNft.symbol}_${nowEthNft.token_id}`;
+                        nowEthNft.moralisImageUri = "";
+                    }
 
-                        nowEthNft.token_chain = "Eth";
+                    nowEthNft.token_chain = "Eth";
 
-                        console.log(nowEthNft.itemName);
-                        // console.log(nowEthNft.moralisImageUri);
+                    console.log(nowEthNft.itemName);
+                    // console.log(nowEthNft.moralisImageUri);
 
+                    // 着せ替え対象だけ選別する
+                    if (baseNFTChains.indexOf(nowEthNft.token_address) != -1) {
                         nowEthNFTs.push(nowEthNft);
                     }
+
+                    // こちらは全て保持する（取得したものの調査のため
+                    nowEthNFTsAll.push(nowEthNft);
                 }
                 setEthNFTs(nowEthNFTs);
+                setEthNFTsAll(nowEthNFTsAll);
             },[])
         }
     }, [isInitialized, isAuthenticated])
 
-    return ethNFTs;
+    const isLoaded = true;
+    return [ethNFTs, ethNFTsAll, isLoaded];
 
     function getMoraliImageUri(ipfsUri) {
         // console.log(ipfsUri);
