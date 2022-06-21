@@ -21,7 +21,7 @@ export default function useEthNFTs() {
 
     const [ethNFTs, setEthNFTs] = useState([]);
     const [ethNFTsAll, setEthNFTsAll] = useState([]);
-    const isLoaded = false;
+    let isLoaded = false;
 
     useEffect(() => {
         if (isInitialized && isAuthenticated) {
@@ -37,7 +37,7 @@ export default function useEthNFTs() {
                 console.log("response.result");
                 console.log(response.result);
 
-                if (response.result == undefined || response.result.length == 0) {
+                if (response.result === undefined || response.result.length === 0) {
                     setEthNFTs(nowEthNFTs);
                     return;
                 }
@@ -66,7 +66,7 @@ export default function useEthNFTs() {
                             if (nowEthNft.metadata.image.startsWith("ipfs://")) {
                                 nowEthNft.moralisImageUri = getMoraliImageUri(nowEthNft.metadata.image);
                             } else {
-                                if (nowEthNft.symbol == "CNP") {
+                                if (nowEthNft.symbol === "CNP") {
                                     // CNPは画像をうちのS3に置いてある。何故か読み込めない時があったので。
                                     nowEthNft.moralisImageUri = `https://love-addicted-girls-test.s3.ap-northeast-3.amazonaws.com/gen-res/CNP/pics/${nowEthNft.token_id}.png`
                                 } else {
@@ -85,7 +85,7 @@ export default function useEthNFTs() {
                     // console.log(nowEthNft.moralisImageUri);
 
                     // 着せ替え対象だけ選別する
-                    if (baseNFTChains.indexOf(nowEthNft.token_address) != -1) {
+                    if (baseNFTChains.indexOf(nowEthNft.token_address) !== -1) {
                         nowEthNFTs.push(nowEthNft);
                     }
 
