@@ -110,7 +110,7 @@ export default function useEthNFTs() {
 
 export function useEthNFT(token_address, token_id) {
 
-    const ethNFTs = useEthNFTs();
+    const [ethNFTs, ethNFTsAll, isLoaded] = useEthNFTs();
 
     for (let i = 0; i < ethNFTs.length; i++) {
         let nowEthNft = ethNFTs[i];
