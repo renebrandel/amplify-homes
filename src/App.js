@@ -4,7 +4,7 @@ import { NavBar, MarketingFooter } from './ui-components'
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { useMoralis } from "react-moralis";
 import Dressup from "./routes/dressup";
-import List from './routes/list';
+import CollectionList from './routes/collectionList';
 
 function App() {
 
@@ -99,7 +99,7 @@ function App() {
     <BrowserRouter>
       {dispNavBar()}
       <Routes>
-        <Route path="/" element={<List />} />
+        <Route path="/" element={<CollectionList />} />
         <Route path="/dressup" element={<Dressup />} />
       </Routes>
     </BrowserRouter>
