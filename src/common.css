@@ -1,5 +1,6 @@
 body {
   background-color: #f4e8e7;
+  color: #8b8281;
 }
 
 button {
@@ -16,6 +17,13 @@ button:hover {
   cursor: pointer;
   box-shadow: 0 0 12px rgba(0, 0, 0, .2);
   transition: box-shadow ease-in-out .2s;
+}
+
+.collection {
+  margin: 0;
+  font-size: 30px;
+  font-weight: bold;
+  color: #393231;
 }
 
 /* card-list */
@@ -72,7 +80,7 @@ button:hover {
   overflow: hidden;
 }
 .card__dress-up--pj {
-  margin: 0;
+  margin: 6px 0 0;
   font-size: 14px;
   color: #8B8281;
 }
