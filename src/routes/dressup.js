@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useMoralis, useMoralisWeb3Api } from "react-moralis";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEthNFT } from '../api/evmnft';
-import { ButtonGroup, Image } from '@aws-amplify/ui-react';
+import { ButtonGroup } from '@aws-amplify/ui-react';
 import html2canvas from "html2canvas";
 
 export default function Dressup(props) {
+
+    console.log(props);
 
     const query = new URLSearchParams(useLocation().search);
     const selectedChain = query.get('token_chain');
     const selectedNftAddress = query.get('token_address');
     const selectedTokenId = query.get('token_id');
 
-    const selectedEthNFT = useEthNFT(selectedNftAddress, selectedTokenId);
+    const selectedEthNFT = useEthNFT(selectedChain, selectedNftAddress, selectedTokenId);
 
     console.log('selectedNftAddress : ' + selectedNftAddress);
     console.log('selectedTokenId : ' + selectedTokenId);
