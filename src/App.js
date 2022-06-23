@@ -100,7 +100,7 @@ function App() {
       {dispNavBar()}
       <Routes>
         <Route path="/" element={<CollectionList />} />
-        <Route path="/dressup" element={<Dressup />} />
+        <Route path="/dressup/" element={<Dressup />} />
       </Routes>
     </BrowserRouter>
 
