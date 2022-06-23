@@ -29,7 +29,7 @@ export default function NFTList(params) {
             <div className="mv" key={params.address} style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', padding: '1em'}}>
                 {nfts !== undefined && nfts.map((ethNFT) => (
                     <div class="card-list">
-                        <Link to={`/dressup?token_chain=Eth&token_address=${ethNFT.token_address}&token_id=${ethNFT.token_id}`} style={{textDecoration: 'none'}}>
+                        <Link to={`/dressup/?token_chain=Eth&token_address=${ethNFT.token_address}&token_id=${ethNFT.token_id}`} style={{textDecoration: 'none'}}>
                             <CardNFT
                                 CardNFT={{
                                     key: ethNFT.token_hash,
