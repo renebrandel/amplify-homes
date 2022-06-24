@@ -131,7 +131,7 @@ export default function CollectionList() {
             {/* {(lagNFTs == undefined || lagNFTs.length === 0) && (cnpNFTs == undefined || cnpNFTs.length === 0) &&
                 <div style={{height: 300 + 'px'}}></div>
             } */}
-            <div className="mv" key={'mv4'} style={{marginTop: '4em'}}>
+            <div className="mv" key={'mv4'} style={{marginTop: '8em'}}>
                 <p>Dress Up NFT is currently in beta version.</p>
                 <p>Please contact <a href='https://twitter.com/syunduel'>shunichiro.icp(@syunduel)</a> to report bugs, request improvements, or discuss adding collections.</p>
             </div>
