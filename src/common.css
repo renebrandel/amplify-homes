@@ -1,11 +1,11 @@
 body {
   background-color: #f4e8e7;
+  color: #8b8281;
 }
 
 button {
   height: 42px;
   width: 180px;
-  margin: 0 18px 18px 0;
   padding: 6px;
   border-radius: 20px;
   border: none;
@@ -17,6 +17,13 @@ button:hover {
   cursor: pointer;
   box-shadow: 0 0 12px rgba(0, 0, 0, .2);
   transition: box-shadow ease-in-out .2s;
+}
+
+.collection {
+  margin: 0;
+  font-size: 30px;
+  font-weight: bold;
+  color: #393231;
 }
 
 /* card-list */
@@ -73,7 +80,7 @@ button:hover {
   overflow: hidden;
 }
 .card__dress-up--pj {
-  margin: 0;
+  margin: 6px 0 0;
   font-size: 14px;
   color: #8B8281;
 }
@@ -94,7 +101,7 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
-  margin: 0;
+  margin: 0 0 30px;
 }
 .card__dress-up--option button.select {
   background: #F6DCDA;
