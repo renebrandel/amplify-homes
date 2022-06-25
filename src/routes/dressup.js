@@ -6,7 +6,8 @@ import html2canvas from "html2canvas";
 
 export default function Dressup(props) {
 
-    console.log(props);
+  console.log("Dressup start");
+  console.log(props);
 
     const query = new URLSearchParams(useLocation().search);
     const selectedChain = query.get('token_chain');
@@ -28,7 +29,7 @@ export default function Dressup(props) {
     const [dressUpPicFaceUrl, setDressUpPicFaceUrl] = useState([]);
     const [dressUpPicBodyUrl, setDressUpPicBodyUrl] = useState([]);
     const [dressUpPicFronthairUrl, setDressUpPicFronthairUrl] = useState([]);
-    const [dressUpPicVailStyle, setDressUpPicVailStyle] = useState([]);
+    const [dressUpPicVailStyle, setDressUpPicVailStyle] = useState({backgroundColor: 'lightgray'});
 
     useEffect(() => {
       window.scrollTo(0, 0)
@@ -54,11 +55,14 @@ export default function Dressup(props) {
           setDressUpPicBackhairUrl(selectedEthNFT.moralisImageUri);
         }
 
-        setDressUpPicVailStyle({backgroundColor: 'transparent'});
-
-      } else {
-        setDressUpPicVailStyle({backgroundColor: 'lightgray'});
+        // パーツがパラパラ表示されるのを防ぐために灰色にしておいたヴェールを2秒後に透明にする
+        // パーツ画像が全部ロードされたのを検知してやりたかったが、難しかったので固定の秒数で暫定対応
+        const timer = setTimeout(() => {
+          //some action
+          setDressUpPicVailStyle({backgroundColor: 'transparent'});
+        }, 1.3 * 1000);
       }
+
     }, [selectedEthNFT]);
 
     const onClickBackground = (event) => {
@@ -86,6 +90,7 @@ export default function Dressup(props) {
         }
       }
     }
+
 
     const saveAsImage = uri => {
       const downloadLink = document.createElement("a");
