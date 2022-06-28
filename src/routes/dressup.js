@@ -30,6 +30,7 @@ export default function Dressup(props) {
     const [dressUpPicBodyUrl, setDressUpPicBodyUrl] = useState([]);
     const [dressUpPicFronthairUrl, setDressUpPicFronthairUrl] = useState([]);
     const [dressUpPicVailStyle, setDressUpPicVailStyle] = useState({backgroundColor: 'lightgray'});
+    const [dressUpPicSpin, setDressUpPicSpin] = useState("sk-cube-grid");
 
     useEffect(() => {
       window.scrollTo(0, 0)
@@ -60,6 +61,7 @@ export default function Dressup(props) {
         const timer = setTimeout(() => {
           //some action
           setDressUpPicVailStyle({backgroundColor: 'transparent'});
+          setDressUpPicSpin("");
         }, 1.3 * 1000);
       }
 
@@ -159,6 +161,17 @@ export default function Dressup(props) {
                     <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPicFaceUrl} />
                     <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPicFronthairUrl} />
                     <div id="dress-up-pic-vail" width="400" height="400" className='dress-up-pic' style={dressUpPicVailStyle} />
+                    <div id="dress-up-spin" className={dressUpPicSpin}>
+                      <div className="sk-cube sk-cube1"></div>
+                      <div className="sk-cube sk-cube2"></div>
+                      <div className="sk-cube sk-cube3"></div>
+                      <div className="sk-cube sk-cube4"></div>
+                      <div className="sk-cube sk-cube5"></div>
+                      <div className="sk-cube sk-cube6"></div>
+                      <div className="sk-cube sk-cube7"></div>
+                      <div className="sk-cube sk-cube8"></div>
+                      <div className="sk-cube sk-cube9"></div>
+                    </div>
                   </div>
                   
                   <p class="card__dress-up--pj">{`${selectedEthNFT.name}`}</p>
