@@ -61,15 +61,20 @@ export default function useEthNFTs(targetChain, targetAddress) {
                         if (nowEthNft.metadata === null || nowEthNft.metadata.image === undefined) {
                             nowEthNft.moralisImageUri = "";
                         } else {
-                            if (nowEthNft.metadata.image.startsWith("ipfs://")) {
+                            if (nowEthNft.symbol === "LAG" || nowEthNft.symbol === "CNP") {
+                                // LAGとCNPは画像をうちのS3に置いてある。何故か読み込めない時があったので。
+                                let nowImageName = nowEthNft.token_id;
+                                // LAGの画像ファイル名は4桁固定の0パディング
+                                if (nowEthNft.symbol === "LAG") {
+                                    nowImageName = nowImageName.padStart(4, '0');
+                                }
+                                nowEthNft.moralisImageUri = `https://love-addicted-girls-test.s3.ap-northeast-3.amazonaws.com/gen-res/${nowEthNft.symbol}/pics/${nowImageName}.png`
+                            } else if (nowEthNft.metadata.image.startsWith("ipfs://")) {
+                                // IPFSの場合は、moralisがキャッシュしてくれる画像を取ってくる。
+                                // でもちらほら見れないという報告が来るので、基本的に自前のサーバーに持ってきたほうが良さそう。
                                 nowEthNft.moralisImageUri = getMoraliImageUri(nowEthNft.metadata.image);
                             } else {
-                                if (nowEthNft.symbol === "CNP") {
-                                    // CNPは画像をうちのS3に置いてある。何故か読み込めない時があったので。
-                                    nowEthNft.moralisImageUri = `https://love-addicted-girls-test.s3.ap-northeast-3.amazonaws.com/gen-res/CNP/pics/${nowEthNft.token_id}.png`
-                                } else {
-                                    nowEthNft.moralisImageUri = nowEthNft.metadata.image;
-                                }
+                                nowEthNft.moralisImageUri = nowEthNft.metadata.image;
                             }
                         }
                     } else {
