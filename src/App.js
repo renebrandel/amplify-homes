@@ -82,7 +82,7 @@ function App() {
       }
     }
 
-    return <NavBar width={"100vw"} overrides={navBarOverrides} />;
+    return <NavBar width={"100vw"} overrides={navBarOverrides} className="nav-bar" />;
 
   }
 
@@ -104,7 +104,7 @@ function App() {
       </Routes>
     </BrowserRouter>
 
-    <MarketingFooter width={"100vw"} />
+    <MarketingFooter width={"100vw"}  className="footer-bar" />
   </div>
 
   );
