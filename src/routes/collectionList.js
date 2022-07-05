@@ -133,7 +133,7 @@ export default function CollectionList() {
             } */}
             <div className="mv" key={'mv4'} style={{marginTop: '8em'}}>
                 <p>Dress Up NFT is currently in beta version.</p>
-                <p>Please contact <a href='https://twitter.com/syunduel'>shunichiro.icp(@syunduel)</a> to report bugs, request improvements, or discuss adding collections.</p>
+                <p>Please contact <a href='https://twitter.com/syunduel'>shunichiro(@syunduel)</a> to report bugs, request improvements, or discuss adding collections.</p>
             </div>
 
         </>
