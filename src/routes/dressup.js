@@ -194,7 +194,7 @@ export default function Dressup(props) {
                 <dd>
                   <ButtonGroup aria-label="Background-btn" style={{flexWrap: 'wrap'}} onClick={onClickBackground}>
                     <button value="none">none</button>
-                    {selectedEthNFT != null && selectedEthNFT.symbol == "LAG" &&
+                    {selectedEthNFT != null && (selectedEthNFT.symbol == "LAG" || selectedEthNFT.symbol == "LAGM") &&
                       <>
                         <button value={selectedAttributes.Background}>{selectedAttributes.Background}</button>
                         <button value="LAG Blue Pinstripe">Blue Pinstripe</button>
