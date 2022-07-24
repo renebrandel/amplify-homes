@@ -22,15 +22,21 @@ export default function Dressup(props) {
 
     const [selectedAttributes, setSelectedAttributes] = useState([]);
 
-    const serverRoot = "https://dress-up-nft-ap-northeast-1.s3.ap-northeast-1.amazonaws.com/v1/collection/";
-    const symbol = selectedEthNFT === null? "": selectedEthNFT.symbol;
-    const partsBaseUrl = `${serverRoot}`;
+    const partsBaseUrl = "https://dress-up-nft-ap-northeast-1.s3.ap-northeast-1.amazonaws.com/v1/collection/";
+    const noneUrl = "/none.png"
 
-    const [dressUpPicBackgroundUrl, setDressUpPicBackgroundUrl] = useState([]);
-    const [dressUpPicBackhairUrl, setDressUpPicBackhairUrl] = useState([]);
-    const [dressUpPicFaceUrl, setDressUpPicFaceUrl] = useState([]);
-    const [dressUpPicBodyUrl, setDressUpPicBodyUrl] = useState([]);
-    const [dressUpPicFronthairUrl, setDressUpPicFronthairUrl] = useState([]);
+    const [dressUpPic01Url, setDressUpPic01Url] = useState(noneUrl);
+    const [dressUpPic02Url, setDressUpPic02Url] = useState(noneUrl);
+    const [dressUpPic03Url, setDressUpPic03Url] = useState(noneUrl);
+    const [dressUpPic04Url, setDressUpPic04Url] = useState(noneUrl);
+    const [dressUpPic05Url, setDressUpPic05Url] = useState(noneUrl);
+    const [dressUpPic06Url, setDressUpPic06Url] = useState(noneUrl);
+    const [dressUpPic07Url, setDressUpPic07Url] = useState(noneUrl);
+    const [dressUpPic08Url, setDressUpPic08Url] = useState(noneUrl);
+    const [dressUpPic09Url, setDressUpPic09Url] = useState(noneUrl);
+    const [dressUpPic10Url, setDressUpPic10Url] = useState(noneUrl);
+    const [dressUpPic11Url, setDressUpPic11Url] = useState(noneUrl);
+    const [dressUpPic12Url, setDressUpPic12Url] = useState(noneUrl);
     const [dressUpPicVailStyle, setDressUpPicVailStyle] = useState({backgroundColor: 'lightgray'});
     const [dressUpPicSpin, setDressUpPicSpin] = useState("sk-cube-grid");
 
@@ -44,18 +50,36 @@ export default function Dressup(props) {
           const attribute = selectedEthNFT.metadata.attributes[i];
           nowSelectedAttributes[attribute.trait_type] = attribute.value;
         };
- 
-        setSelectedAttributes(nowSelectedAttributes);
-        
-        setDressUpPicBackgroundUrl(getImageFullUrl(getImageUrl(selectedEthNFT, "background", nowSelectedAttributes.Background)));
-        setDressUpPicBackhairUrl(getImageFullUrl(getImageUrl(selectedEthNFT, "backhair", nowSelectedAttributes.Hair)));
-        setDressUpPicBodyUrl(getImageFullUrl(getImageUrl(selectedEthNFT, "body", nowSelectedAttributes.Body)));
-        setDressUpPicFaceUrl(getImageFullUrl(getImageUrl(selectedEthNFT, "face", nowSelectedAttributes.Face)));
-        setDressUpPicFronthairUrl(getImageFullUrl(getImageUrl(selectedEthNFT, "fronthair", nowSelectedAttributes.Hair)));
 
-        if (nowSelectedAttributes.Hair == undefined) {
-          // LAG以外の場合、暫定的にbackhairに元の画像を入れる
-          setDressUpPicBackhairUrl(selectedEthNFT.moralisImageUri);
+        // console.log("selectedEthNFT");
+        // console.log(selectedEthNFT);
+ 
+        // console.log("nowSelectedAttributes");
+        // console.log(nowSelectedAttributes);
+        setSelectedAttributes(nowSelectedAttributes);
+        selectedEthNFT.attributes = nowSelectedAttributes;
+        
+        if (selectedEthNFT.symbol === "LAG") {
+          setDressUpPic01Url(getImageFullUrl(getImageUrl(selectedEthNFT, "background", nowSelectedAttributes.background)));
+          setDressUpPic02Url(getImageFullUrl(getImageUrl(selectedEthNFT, "effect", nowSelectedAttributes.effect)));
+          setDressUpPic03Url(getImageFullUrl(getImageUrl(selectedEthNFT, "backhair", nowSelectedAttributes.hair)));
+          setDressUpPic04Url(getImageFullUrl(getImageUrl(selectedEthNFT, "body", nowSelectedAttributes.body)));
+          setDressUpPic05Url(getImageFullUrl(getImageUrl(selectedEthNFT, "face", nowSelectedAttributes.face)));
+          setDressUpPic06Url(getImageFullUrl(getImageUrl(selectedEthNFT, "eye", nowSelectedAttributes.eye)));
+          setDressUpPic07Url(getImageFullUrl(getImageUrl(selectedEthNFT, "eyebrow", nowSelectedAttributes.eyebrows)));
+          setDressUpPic08Url(getImageFullUrl(getImageUrl(selectedEthNFT, "mouth", nowSelectedAttributes.mouth)));
+          setDressUpPic09Url(getImageFullUrl(getImageUrl(selectedEthNFT, "fronthair", nowSelectedAttributes.hair)));
+          setDressUpPic10Url(getImageFullUrl(getImageUrl(selectedEthNFT, "accessory", nowSelectedAttributes.Accessory)));
+
+        } else if (selectedEthNFT.symbol === "LAGM") {
+          setDressUpPic01Url(getImageFullUrl(getImageUrl(selectedEthNFT, "background", nowSelectedAttributes.Background)));
+          setDressUpPic02Url(getImageFullUrl(getImageUrl(selectedEthNFT, "backhair", nowSelectedAttributes.Hair)));
+          setDressUpPic03Url(getImageFullUrl(getImageUrl(selectedEthNFT, "body", nowSelectedAttributes.Body)));
+          setDressUpPic04Url(getImageFullUrl(getImageUrl(selectedEthNFT, "face", nowSelectedAttributes.Face)));
+          setDressUpPic05Url(getImageFullUrl(getImageUrl(selectedEthNFT, "fronthair", nowSelectedAttributes.Hair)));
+        } else {
+          // LAGとLAGM以外の場合、元の画像をそのまま入れる
+          setDressUpPic02Url(selectedEthNFT.moralisImageUri);
         }
 
         // パーツがパラパラ表示されるのを防ぐために灰色にしておいたヴェールを2秒後に透明にする
@@ -79,31 +103,41 @@ export default function Dressup(props) {
       }
 
       const nowDressUpPicBackgroundUrl = getImageFullUrl(event.target.value);
-      console.log(dressUpPicBackgroundUrl);
-      setDressUpPicBackgroundUrl(nowDressUpPicBackgroundUrl);
+      console.log(dressUpPic01Url);
+      setDressUpPic01Url(nowDressUpPicBackgroundUrl);
     }
 
     const getImageUrl = (selectedEthNFT, type, value) => {
 
-      if (value == null || value == "" || value == "none") {
+      console.log("getImageUrl");
+      console.log(selectedEthNFT);
+
+      if (value == null || value == "" || value == "none" || value == "None") {
         return "none";
       } else {
 
+        let colorPath = "";
+        if (selectedEthNFT.symbol === "LAG" && (type === "body" || type === "eye" || type === "mouth")) {
+          if (selectedEthNFT.attributes.face === "base_white") {
+            colorPath = "normal/";
+          } else {
+            colorPath = "suntan/";
+          }
+        }
         // const imageUrl = `Polygon/LAGM_0x1a4041cce1aea5fff82e13780d1b1f522a047ef9/parts/background/Blue Pinstripe.png`;
-        const imageUrl = `${selectedEthNFT.chain}/${selectedEthNFT.symbol}_${selectedEthNFT.token_address}/parts/${type}/${value}.png`;
+        const imageUrl = `${selectedEthNFT.chain}/${selectedEthNFT.symbol}_${selectedEthNFT.token_address}/parts/${type}/${colorPath}${value}.png`;
         return imageUrl;
       }
     }
 
     const getImageFullUrl = (value) => {
       if (value == null || value == "" || value == "none") {
-        return "/none.png";
+        return noneUrl;
       } else {
         console.log(value);
         return partsBaseUrl + value;
       }
     }
-
 
     const saveAsImage = uri => {
       const downloadLink = document.createElement("a");
@@ -164,13 +198,20 @@ export default function Dressup(props) {
                 <>
                   <div id="dress-up-window" width="400" height="400">
                     {/* <img className="dress-up-pic" src={`${selectedEthNFT.moralisImageUri}`} /> */}
-                    <img className="dress-up-pic-background" src="/none.png"/>
+                    <img className="dress-up-pic-base" src="/none.png"/>
                     {/* <img className="dress-up-pic" src="https://love-addicted-girls-test.s3.ap-northeast-3.amazonaws.com/gen-res/LAG/parts/background/%5BR%5DBlue+Pinstripe2.png" /> */}
-                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPicBackgroundUrl} />
-                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPicBackhairUrl} />
-                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPicBodyUrl} />
-                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPicFaceUrl} />
-                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPicFronthairUrl} />
+                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPic01Url} />
+                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPic02Url} />
+                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPic03Url} />
+                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPic04Url} />
+                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPic05Url} />
+                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPic06Url} />
+                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPic07Url} />
+                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPic08Url} />
+                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPic09Url} />
+                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPic10Url} />
+                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPic11Url} />
+                    <img className="dress-up-pic" crossOrigin='anonymous' src={dressUpPic12Url} />
                     <div id="dress-up-pic-vail" width="400" height="400" className='dress-up-pic' style={dressUpPicVailStyle} />
                     <div id="dress-up-spin" className={dressUpPicSpin}>
                       <div className="sk-cube sk-cube1"></div>
@@ -207,7 +248,7 @@ export default function Dressup(props) {
                     <button value="none">none</button>
                     {selectedEthNFT != null && (selectedEthNFT.symbol == "LAG" || selectedEthNFT.symbol == "LAGM") &&
                       <>
-                        <button value={selectedChain+"/"+selectedEthNFT.symbol+"_"+selectedNftAddress+"/parts/background/"+selectedAttributes.Background+".png"}>{selectedAttributes.Background}</button>
+                        <button value={selectedChain+"/"+selectedEthNFT.symbol+"_"+selectedNftAddress+"/parts/background/"+(selectedAttributes.Background? selectedAttributes.Background: selectedAttributes.background)+".png"}>{selectedAttributes.Background? selectedAttributes.Background: selectedAttributes.background? selectedAttributes.background.replace("_", " "): ""}</button>
                         <button value="Polygon/LAGM_0x1a4041cce1aea5fff82e13780d1b1f522a047ef9/parts/background/Blue Pinstripe.png">Blue Pinstripe</button>
                         <button value="Polygon/LAGM_0x1a4041cce1aea5fff82e13780d1b1f522a047ef9/parts/background/Pink Pinstripe.png">Pink Pinstripe</button>
                         <button value="Polygon/LAGM_0x1a4041cce1aea5fff82e13780d1b1f522a047ef9/parts/background/Violet Pinstripe.png">Violet Pinstripe</button>
