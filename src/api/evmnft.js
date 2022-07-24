@@ -161,7 +161,6 @@ export function useEthNFT(targetChain, targetAddress, targetTokenId) {
 
     for (let i = 0; i < ethNFTs.length; i++) {
         let nowEthNft = ethNFTs[i];
-        // console.log(nowEthNft.token_address);
         if (nowEthNft.token_id === targetTokenId) {
             return nowEthNft;
         }

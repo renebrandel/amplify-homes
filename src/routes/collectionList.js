@@ -4,17 +4,17 @@ import NFTList from './nftList';
 export default function CollectionList() {
 
     const targetEvmNFTs = [
-        // {
-        //     name: "Love Addicted Girls",
-        //     chain: "Eth",
-        //     address: "0x9c99d7f09d4a7e23ea4e36aec4cb590c5bbdb0e2",
-        //     url: "https://opensea.io/collection/love-addicted-girls",
-        // },
+        {
+            name: "Love Addicted Girls",
+            chain: "Eth",
+            address: "0x9c99d7f09d4a7e23ea4e36aec4cb590c5bbdb0e2",
+            url: "https://opensea.io/collection/love-addicted-girls",
+        },
         {
             name: "Love Addicted Girls Memories",
             chain: "Polygon",
             address: "0x1a4041cce1aea5fff82e13780d1b1f522a047ef9",
-            url: "https://opensea.io/collection/love-addicted-girls",
+            url: "https://opensea.io/collection/love-addicted-girls-memories",
         },
         {
             name: "CryptoNinja Partners",

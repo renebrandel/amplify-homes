@@ -22,7 +22,9 @@ export default function Dressup(props) {
 
     const [selectedAttributes, setSelectedAttributes] = useState([]);
 
-    const partsBaseUrl = "https://love-addicted-girls-test.s3.ap-northeast-3.amazonaws.com/gen-res/";
+    const serverRoot = "https://dress-up-nft-ap-northeast-1.s3.ap-northeast-1.amazonaws.com/v1/collection/";
+    const symbol = selectedEthNFT === null? "": selectedEthNFT.symbol;
+    const partsBaseUrl = `${serverRoot}`;
 
     const [dressUpPicBackgroundUrl, setDressUpPicBackgroundUrl] = useState([]);
     const [dressUpPicBackhairUrl, setDressUpPicBackhairUrl] = useState([]);
@@ -45,11 +47,11 @@ export default function Dressup(props) {
  
         setSelectedAttributes(nowSelectedAttributes);
         
-        setDressUpPicBackgroundUrl(getImageUrl("background", nowSelectedAttributes.Background));
-        setDressUpPicBackhairUrl(getImageUrl("backhair", nowSelectedAttributes.Hair));
-        setDressUpPicBodyUrl(getImageUrl("body", nowSelectedAttributes.Body));
-        setDressUpPicFaceUrl(getImageUrl("face", nowSelectedAttributes.Face));
-        setDressUpPicFronthairUrl(getImageUrl("fronthair", nowSelectedAttributes.Hair));
+        setDressUpPicBackgroundUrl(getImageFullUrl(getImageUrl(selectedEthNFT, "background", nowSelectedAttributes.Background)));
+        setDressUpPicBackhairUrl(getImageFullUrl(getImageUrl(selectedEthNFT, "backhair", nowSelectedAttributes.Hair)));
+        setDressUpPicBodyUrl(getImageFullUrl(getImageUrl(selectedEthNFT, "body", nowSelectedAttributes.Body)));
+        setDressUpPicFaceUrl(getImageFullUrl(getImageUrl(selectedEthNFT, "face", nowSelectedAttributes.Face)));
+        setDressUpPicFronthairUrl(getImageFullUrl(getImageUrl(selectedEthNFT, "fronthair", nowSelectedAttributes.Hair)));
 
         if (nowSelectedAttributes.Hair == undefined) {
           // LAG以外の場合、暫定的にbackhairに元の画像を入れる
@@ -76,20 +78,29 @@ export default function Dressup(props) {
         return;
       }
 
-      const nowDressUpPicBackgroundUrl = getImageUrl("background", event.target.value);
+      const nowDressUpPicBackgroundUrl = getImageFullUrl(event.target.value);
       console.log(dressUpPicBackgroundUrl);
       setDressUpPicBackgroundUrl(nowDressUpPicBackgroundUrl);
     }
 
-    const getImageUrl = (type, value) => {
+    const getImageUrl = (selectedEthNFT, type, value) => {
+
+      if (value == null || value == "" || value == "none") {
+        return "none";
+      } else {
+
+        // const imageUrl = `Polygon/LAGM_0x1a4041cce1aea5fff82e13780d1b1f522a047ef9/parts/background/Blue Pinstripe.png`;
+        const imageUrl = `${selectedEthNFT.chain}/${selectedEthNFT.symbol}_${selectedEthNFT.token_address}/parts/${type}/${value}.png`;
+        return imageUrl;
+      }
+    }
+
+    const getImageFullUrl = (value) => {
       if (value == null || value == "" || value == "none") {
         return "/none.png";
       } else {
-        if (value.startsWith("CNP") || value.startsWith("LAG")) {
-          return partsBaseUrl + value.substr(0, 3) + "/parts/" + type + "/" + value.substr(4) + ".png";
-        } else {
-          return partsBaseUrl + "LAG/parts/" + type + "/" + value + ".png";
-        }
+        console.log(value);
+        return partsBaseUrl + value;
       }
     }
 
@@ -196,37 +207,37 @@ export default function Dressup(props) {
                     <button value="none">none</button>
                     {selectedEthNFT != null && (selectedEthNFT.symbol == "LAG" || selectedEthNFT.symbol == "LAGM") &&
                       <>
-                        <button value={selectedAttributes.Background}>{selectedAttributes.Background}</button>
-                        <button value="LAG Blue Pinstripe">Blue Pinstripe</button>
-                        <button value="LAG Pink Pinstripe">Pink Pinstripe</button>
-                        <button value="LAG Violet Pinstripe">Violet Pinstripe</button>
-                        <button value="LAG AstarCats1139">AstarCats1139</button>
-                        <button value="LAG AstarCats2377">AstarCats2377</button>
-                        <button value="LAG AstarCats6730">AstarCats6730</button>
+                        <button value={selectedChain+"/"+selectedEthNFT.symbol+"_"+selectedNftAddress+"/parts/background/"+selectedAttributes.Background+".png"}>{selectedAttributes.Background}</button>
+                        <button value="Polygon/LAGM_0x1a4041cce1aea5fff82e13780d1b1f522a047ef9/parts/background/Blue Pinstripe.png">Blue Pinstripe</button>
+                        <button value="Polygon/LAGM_0x1a4041cce1aea5fff82e13780d1b1f522a047ef9/parts/background/Pink Pinstripe.png">Pink Pinstripe</button>
+                        <button value="Polygon/LAGM_0x1a4041cce1aea5fff82e13780d1b1f522a047ef9/parts/background/Violet Pinstripe.png">Violet Pinstripe</button>
+                        <button value="Polygon/LAGM_0x1a4041cce1aea5fff82e13780d1b1f522a047ef9/parts/background/AstarCats1139.png">AstarCats1139</button>
+                        <button value="Polygon/LAGM_0x1a4041cce1aea5fff82e13780d1b1f522a047ef9/parts/background/AstarCats2377.png">AstarCats2377</button>
+                        <button value="Polygon/LAGM_0x1a4041cce1aea5fff82e13780d1b1f522a047ef9/parts/background/AstarCats6730.png">AstarCats6730</button>
                       </>
                     }
                     {selectedEthNFT != null && selectedEthNFT.symbol == "CNP" &&
                       <>
-                        <button value="CNP back_01_001">Standard01</button>
-                        <button value="CNP back_01_002">Standard02</button>
-                        <button value="CNP back_01_003">Standard03</button>
-                        <button value="CNP back_01_004">Standard04</button>
-                        <button value="CNP back_01_005">Standard05</button>
-                        <button value="CNP back_01_006">Standard06</button>
-                        <button value="CNP back_01_007">Standard07</button>
-                        <button value="CNP back_01_008">Standard08</button>
-                        <button value="CNP back_01_009">Standard09</button>
-                        <button value="CNP back_01_010">Standard10</button>
-                        <button value="CNP back_02_001">Choppy sea01</button>
-                        <button value="CNP back_02_002">Choppy sea02</button>
-                        <button value="CNP back_02_003">Choppy sea03</button>
-                        <button value="CNP back_02_004">Choppy sea04</button>
-                        <button value="CNP back_02_005">Choppy sea05</button>
-                        <button value="CNP back_02_006">Choppy sea06</button>
-                        <button value="CNP back_02_007">Choppy sea07</button>
-                        <button value="CNP back_02_008">Choppy sea08</button>
-                        <button value="CNP back_02_009">Choppy sea09</button>
-                        <button value="CNP back_02_010">Choppy sea10</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_01_001.png">Standard01</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_01_002.png">Standard02</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_01_003.png">Standard03</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_01_004.png">Standard04</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_01_005.png">Standard05</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_01_006.png">Standard06</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_01_007.png">Standard07</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_01_008.png">Standard08</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_01_009.png">Standard09</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_01_010.png">Standard10</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_02_001.png">Choppy sea01</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_02_002.png">Choppy sea02</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_02_003.png">Choppy sea03</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_02_004.png">Choppy sea04</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_02_005.png">Choppy sea05</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_02_006.png">Choppy sea06</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_02_007.png">Choppy sea07</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_02_008.png">Choppy sea08</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_02_009.png">Choppy sea09</button>
+                        <button value="Eth/CNP_0x845a007d9f283614f403a24e3eb3455f720559ca/parts/background/back_02_010.png">Choppy sea10</button>
                       </>
                     }
                   </ButtonGroup>
