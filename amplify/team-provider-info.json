@@ -10,6 +10,17 @@
       "StackName": "amplify-amplifyhomes-dev-190136",
       "StackId": "arn:aws:cloudformation:ap-southeast-1:237245724633:stack/amplify-amplifyhomes-dev-190136/71ca8de0-0f25-11ed-a8c9-02f6d8c2d12a",
       "AmplifyAppId": "d31n9q8jmilypl"
+    },
+    "categories": {
+      "auth": {
+        "amplifyhomes": {}
+      },
+      "storage": {
+        "amplifyhomes8cdd0cb3": {
+          "bucketName": "ai-amplify-app-test",
+          "region": "ap-southeast-1"
+        }
+      }
     }
   }
 }

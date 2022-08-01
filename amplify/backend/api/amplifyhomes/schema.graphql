@@ -1,3 +1,13 @@
+type HomeDetail @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  address: String
+  image_url: String
+  price: Int
+  building_name: String
+  floor: Int
+  facilities: [String]
+}
+
 type Home @model @auth(rules: [{allow: public}]) {
   id: ID!
   address: String

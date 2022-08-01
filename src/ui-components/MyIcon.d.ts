@@ -5,14 +5,11 @@
  **************************************************************************/
 
 import React from "react";
-import { Home } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { FlexProps } from "@aws-amplify/ui-react";
-import { SyntheticEvent } from "react";
-export declare type StandardCardProps = React.PropsWithChildren<Partial<FlexProps> & {
-    home?: Home;
-    getHome?: (event: SyntheticEvent) => void;
+import { IconProps } from "@aws-amplify/ui-react";
+export declare type MyIconProps = React.PropsWithChildren<Partial<IconProps> & {
+    type?: "alert" | "arrow-right" | "bookmark_border" | "chat" | "chat-bubble-outline" | "checkmark" | "close" | "delete" | "favorite" | "favorite_border" | "group" | "info" | "more_horiz" | "more_vert" | "reply" | "send" | "share" | "shopping_bag" | "shuffle" | "warning";
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
-export default function StandardCard(props: StandardCardProps): React.ReactElement;
+export default function MyIcon(props: MyIconProps): React.ReactElement;

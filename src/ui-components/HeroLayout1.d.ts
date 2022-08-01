@@ -5,14 +5,11 @@
  **************************************************************************/
 
 import React from "react";
-import { Home } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { FlexProps } from "@aws-amplify/ui-react";
-import { SyntheticEvent } from "react";
-export declare type StandardCardProps = React.PropsWithChildren<Partial<FlexProps> & {
-    home?: Home;
-    getHome?: (event: SyntheticEvent) => void;
+export declare type HeroLayout1Props = React.PropsWithChildren<Partial<FlexProps> & {
+    mode?: "Dark" | "Light" | "Mode3";
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
-export default function StandardCard(props: StandardCardProps): React.ReactElement;
+export default function HeroLayout1(props: HeroLayout1Props): React.ReactElement;

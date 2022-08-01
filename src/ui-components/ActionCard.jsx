@@ -7,9 +7,9 @@
 /* eslint-disable */
 import React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { Flex, Image, Text } from "@aws-amplify/ui-react";
-export default function StandardCard(props) {
-  const { home, getHome, overrides, ...rest } = props;
+import { Button, Flex, Image, Rating, Text } from "@aws-amplify/ui-react";
+export default function ActionCard(props) {
+  const { overrides, ...rest } = props;
   return (
     <Flex
       gap="0"
@@ -20,17 +20,15 @@ export default function StandardCard(props) {
       padding="0px 0px 0px 0px"
       backgroundColor="rgba(255,255,255,1)"
       {...rest}
-      {...getOverrideProps(overrides, "StandardCard")}
+      {...getOverrideProps(overrides, "ActionCard")}
     >
       <Image
-        height="160px"
+        height="408px"
         shrink="0"
         alignSelf="stretch"
         objectFit="cover"
         position="relative"
         padding="0px 0px 0px 0px"
-        src={home?.image_url}
-        onClick={getHome}
         {...getOverrideProps(overrides, "image")}
       ></Image>
       <Flex
@@ -51,7 +49,7 @@ export default function StandardCard(props) {
           objectFit="cover"
           position="relative"
           padding="0px 0px 0px 0px"
-          {...getOverrideProps(overrides, "Text Group")}
+          {...getOverrideProps(overrides, "Main Text")}
         >
           <Text
             fontFamily="Inter"
@@ -69,14 +67,14 @@ export default function StandardCard(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children={home?.price}
-            {...getOverrideProps(overrides, "$99 USD")}
+            children="Classic Long Sleeve T-Shirt"
+            {...getOverrideProps(overrides, "Classic Long Sleeve T-Shirt")}
           ></Text>
           <Text
             fontFamily="Inter"
             fontSize="16px"
             fontWeight="400"
-            color="rgba(13,26,38,1)"
+            color="rgba(48,64,80,1)"
             lineHeight="24px"
             textAlign="left"
             display="flex"
@@ -89,29 +87,57 @@ export default function StandardCard(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children={home?.address}
-            {...getOverrideProps(overrides, "4bds 3 ba 2,530 sqft - Active")}
-          ></Text>
-          <Text
-            fontFamily="Inter"
-            fontSize="14px"
-            fontWeight="400"
-            color="rgba(48,64,80,1)"
-            lineHeight="24px"
-            textAlign="left"
-            display="flex"
-            direction="column"
-            justifyContent="flex-start"
-            shrink="0"
-            alignSelf="stretch"
-            objectFit="cover"
-            position="relative"
-            padding="0px 0px 0px 0px"
-            whiteSpace="pre-wrap"
-            children="日本"
-            {...getOverrideProps(overrides, "832 34th Ave, Seattle, WA 98122")}
+            children="Information about this product"
+            {...getOverrideProps(overrides, "Information about this product")}
           ></Text>
         </Flex>
+        <Rating
+          display="flex"
+          gap="8px"
+          direction="row"
+          width="174px"
+          alignItems="center"
+          shrink="0"
+          position="relative"
+          padding="0px 0px 0px 0px"
+          size="default"
+          {...getOverrideProps(overrides, "Rating")}
+        ></Rating>
+        <Text
+          fontFamily="Inter"
+          fontSize="20px"
+          fontWeight="700"
+          color="rgba(13,26,38,1)"
+          lineHeight="25px"
+          textAlign="left"
+          display="flex"
+          direction="column"
+          justifyContent="flex-start"
+          shrink="0"
+          alignSelf="stretch"
+          objectFit="cover"
+          position="relative"
+          padding="0px 0px 0px 0px"
+          whiteSpace="pre-wrap"
+          children="$99 USD"
+          {...getOverrideProps(overrides, "$99 USD")}
+        ></Text>
+        <Button
+          display="flex"
+          gap="0"
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          shrink="0"
+          alignSelf="stretch"
+          objectFit="cover"
+          position="relative"
+          size="large"
+          isDisabled={false}
+          variation="primary"
+          children="Primary Button"
+          {...getOverrideProps(overrides, "Button")}
+        ></Button>
       </Flex>
     </Flex>
   );
