@@ -1,17 +1,20 @@
 {
-  "name": "amplify-homes",
+  "name": "aws-amplify-studio-test",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@aws-amplify/ui-react": "^2.13.0",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "aws-amplify": "^4.3.8",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.0.1"
+    "@aws-amplify/ui-react": "^6.1.8",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "aws-amplify": "^6.0.28",
+    "postcss": "^8",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-safe-parser": "4.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -36,5 +39,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  },
+  "resolutions": {
+    "postcss": "^8.4.38",
+    "postcss-safe-parser": "^7.0.0"
   }
+  
+  
 }
