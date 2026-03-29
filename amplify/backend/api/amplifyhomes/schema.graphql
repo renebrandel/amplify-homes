@@ -1,6 +1,22 @@
 type Home @model @auth(rules: [{allow: public}]) {
   id: ID!
-  address: String
-  image_url: String
-  price: Float
+  zpid: String!
+  address: String!
+  price: Float!
+  zestimate: Float
+  sqft: Float!
+  pricePerSqft: Float!
+  bedrooms: Int
+  bathrooms: Float
+  propertyType: String
+  daysOnMarket: Int
+  priceReduction: Float
+  lotSqft: Float
+  yearBuilt: Int
+  dealScore: Float!
+  scoreBreakdown: AWSJSON
+  imageUrl: String
+  zillowUrl: String
+  zipCode: String!
+  lastScraped: AWSDateTime
 }

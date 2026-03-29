@@ -1,0 +1,99 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+
+# ═══════════════════════════════════════════════════════════════════
+#  Amplify Homes — Scraper Pipeline
+# ═══════════════════════════════════════════════════════════════════
+#  Deploys a Lambda function that scrapes Zillow listings daily
+#  and writes scored deals to the Amplify-managed DynamoDB table.
+#
+#  Deploy:
+#    sam build && sam deploy --guided
+#
+#  Or use the deploy script:
+#    ./pipeline/deploy.sh
+# ═══════════════════════════════════════════════════════════════════
+
+Description: >
+  Amplify Homes scraper pipeline — Lambda function triggered daily by
+  EventBridge to scrape Zillow listings across Indianapolis zip codes,
+  score them, and write deals to DynamoDB.
+
+Parameters:
+  HomeTableName:
+    Type: String
+    Description: >
+      Name of the DynamoDB table created by Amplify for the Home model.
+      Find it in the AWS console under DynamoDB > Tables, named like
+      "Home-XXXXXXXXXX-staging".
+    AllowedPattern: "^Home-.+"
+
+  RapidApiKey:
+    Type: String
+    Description: Your RapidAPI key for the zillow-com1 API.
+    NoEcho: true
+
+  ScheduleExpression:
+    Type: String
+    Default: "rate(1 day)"
+    Description: >
+      How often to run the scraper. Examples:
+        rate(1 day)       — once daily
+        rate(12 hours)    — twice daily
+        cron(0 8 * * ? *) — daily at 8am UTC
+
+Globals:
+  Function:
+    Timeout: 120
+    Runtime: python3.11
+    MemorySize: 256
+
+Resources:
+  # ─── Lambda Function ──────────────────────────────────────────
+  ScraperFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: amplify-homes-scraper
+      Description: Scrapes Zillow listings, scores deals, writes to DynamoDB
+      Handler: pipeline.handler.lambda_handler
+      CodeUri: ../
+      Environment:
+        Variables:
+          RAPIDAPI_KEY: !Ref RapidApiKey
+          HOME_TABLE_NAME: !Ref HomeTableName
+      Policies:
+        # Write access to the Amplify-managed Home table
+        - DynamoDBCrudPolicy:
+            TableName: !Ref HomeTableName
+      Events:
+        # Daily scheduled trigger
+        DailySchedule:
+          Type: Schedule
+          Properties:
+            Schedule: !Ref ScheduleExpression
+            Description: Daily scraper run for Indianapolis zip codes
+            Enabled: true
+
+  # ─── CloudWatch Log Group (auto-cleanup) ───────────────────────
+  ScraperLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub "/aws/lambda/${ScraperFunction}"
+      RetentionInDays: 14
+
+Outputs:
+  ScraperFunctionArn:
+    Description: ARN of the scraper Lambda function
+    Value: !GetAtt ScraperFunction.Arn
+
+  ScraperFunctionName:
+    Description: Name of the scraper Lambda function
+    Value: !Ref ScraperFunction
+
+  ManualInvokeCommand:
+    Description: CLI command to trigger the scraper manually
+    Value: !Sub >
+      aws lambda invoke
+        --function-name ${ScraperFunction}
+        --payload '{"zip_codes": ["46220"]}'
+        /dev/stdout
